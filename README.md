@@ -1,6 +1,6 @@
-# NFDI4Earth HydroOntology
+# NFDI4Earth HM-Ontology
 
-The **NFDI4Earth HydroOntology** is a lightweight, domain-specific ontology developed to describe hydrological concepts, variables, and relationships in a semantically consistent and machine-readable way. It is intended to support the **FAIR (Findable, Accessible, Interoperable, Reusable)** principles for hydrological data by enabling semantic annotation, RDF transformation, and integration into knowledge graphs.
+The **NFDI4Earth HM-Ontology** is a lightweight, domain-specific ontology developed to describe hydrological concepts, variables, and relationships in a semantically consistent and machine-readable way. It is intended to support the **FAIR (Findable, Accessible, Interoperable, Reusable)** principles for hydrological data by enabling semantic annotation, RDF transformation, and integration into knowledge graphs.
 
 This ontology was developed as part of [NFDI4Earth project](https://www.nfdi4earth.de/) focused on transforming conventional hydrology datasets (e.g., CSVs) into semantically enriched RDF knowledge graphs, enabling better interoperability, query capabilities, and integration with other datasets using Semantic Web technologies.
 
@@ -11,11 +11,6 @@ Hydrological datasets are often shared in formats like CSV, which lack semantic 
 - Linking to existing vocabularies (e.g., SOSA, QUDT, EnvThes, Schema.org).
 - Supporting the semantic transformation of datasets such as **LamaH-CE**.
 - Enabling intelligent querying through **SPARQL** or integration with **question-answering systems**.
-
-## 📦 Repository Contents
-
-- [`NFDI4Earth_HydroOntology_FULL.ttl`](./NFDI4Earth_HydroOntology_FULL.ttl): The full OWL ontology in Turtle syntax.
-- `README.md`: This documentation file describing the ontology and its usage.
 
 ## 🚀 Key Features
 
@@ -35,10 +30,13 @@ The ontology was used to annotate and convert the [LamaH-CE](https://github.com/
 - Execution of SPARQL queries for hydrological analysis.
 - Natural Language Question Answering over RDF data.
 
-## 🔗 Ontology URI and Prefix
+## 🔗 Re-using the Ontology
 
-- Ontology base URI: [`https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#`](https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#)
-- Recommended prefix: `n4e_hyd`
+- Recommended prefix: hyobs
+- Unique terms for the annotation of the hydrometeorological observations and time series: [`owl/ttl`](./NFDI4Earth_HydroOntology_FULL.ttl) | [online](https://hydro-knowledge-graph-f48785.pages.rwth-aachen.de/)
+- Basic data model for the LamaH-CE and CAMELS-GB datasets [image]() | [owl]()
+
+<img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/fde2f17d-ac4b-48c4-93e3-184f8df46e18" />
 
 ## Acknowledgments
 This ontology is developed as part of the [NFDI4Earth](https://www.nfdi4earth.de/) initiative, aiming to advance research data management in Earth System Sciences. The project is coordinated by Technische Universität Dresden and funded by the German Research Foundation (DFG) under project number 460036893.
