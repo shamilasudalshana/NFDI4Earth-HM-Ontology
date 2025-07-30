@@ -38,6 +38,10 @@ The ontology was used to annotate and convert the [LamaH-CE](https://github.com/
 
 <img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/fde2f17d-ac4b-48c4-93e3-184f8df46e18" />
 
+##  Contact
+- Shamila
+- [AurioL Degbelo](https://sites.google.com/site/aurioldegbelo/)
+
 ## Acknowledgments
 This ontology is developed as part of the [NFDI4Earth](https://www.nfdi4earth.de/) initiative, aiming to advance research data management in Earth System Sciences. The project is coordinated by Technische Universität Dresden and funded by the German Research Foundation (DFG) under project number 460036893.
 
