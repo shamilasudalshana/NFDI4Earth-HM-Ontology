@@ -22,13 +22,15 @@ Hydrological datasets are often shared in formats like CSV, which lack semantic 
   - [Schema.org](https://schema.org): For general-purpose descriptions.
 - Built-in support for mapping CSV columns to ontology concepts via custom mapping configuration.
 
-## 🧪 Example Use Case
+## 🧪 Example Use Case(s)
 
 The ontology was used to annotate and convert the [LamaH-CE](https://github.com/realwaterresearch/LamaH-CE) dataset to RDF using a custom-built tool called **HydroTurtle**. The annotated RDF knowledge graph enabled:
 
 - Integration of catchment attributes and time series measurements.
 - Execution of SPARQL queries for hydrological analysis.
-- Natural Language Question Answering over RDF data.
+- Natural Language Question Answering over RDF data. 
+
+The LamaH-CE Knowledge Graph can be found [here](Zenodo Link), and the scripts for the conversion from CSV to RDF are accessible at [repository](https://github.com/shamilasudalshana/Hydro-NLQA-LamaH-CE)
 
 ## 🔗 Re-using the Ontology
 
