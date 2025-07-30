@@ -20,7 +20,7 @@ Hydrological datasets are often shared in formats like CSV, which lack semantic 
   - [QUDT](http://qudt.org/): For units and quantities.
   - [EnvThes](https://vocabs.lter-europe.net/EnvThes/en/): For environmental related definitions. 
   - [Schema.org](https://schema.org): For general-purpose descriptions.
-- Built-in support for mapping CSV columns to ontology concepts via custom mapping configuration.
+- Built-in support for mapping CSV columns to ontology concepts via [custom mapping configuration](https://github.com/shamilasudalshana/Hydro-NLQA-LamaH-CE).
 
 ## 🧪 Example Use Case(s)
 
@@ -30,18 +30,18 @@ The ontology was used to annotate and convert the [LamaH-CE](https://github.com/
 - Execution of SPARQL queries for hydrological analysis.
 - Natural Language Question Answering over RDF data. 
 
-The LamaH-CE Knowledge Graph can be found [here](Zenodo Link), and the scripts for the conversion from CSV to RDF are accessible at [repository](https://github.com/shamilasudalshana/Hydro-NLQA-LamaH-CE)
+The LamaH-CE Knowledge Graph can be found [here](Zenodo Link)
 
 ## 🔗 Re-using the Ontology
 
 - Recommended prefix: hyobs
 - Unique terms for the annotation of the hydrometeorological observations and time series: [`owl/ttl`](./NFDI4Earth_HydroOntology_FULL.ttl) | [online](https://hydro-knowledge-graph-f48785.pages.rwth-aachen.de/)
 - Basic data model for the LamaH-CE and CAMELS-GB datasets [image]() | [owl]()
-
+- Mapping file: https://github.com/shamilasudalshana/NFDI4Earth-HydroTurtle
 <img width="841" height="470" alt="image" src="https://github.com/user-attachments/assets/fde2f17d-ac4b-48c4-93e3-184f8df46e18" />
 
 ##  Contact
-- Shamila
+- Shamila Herath
 - [AurioL Degbelo](https://sites.google.com/site/aurioldegbelo/)
 
 ## Acknowledgments
