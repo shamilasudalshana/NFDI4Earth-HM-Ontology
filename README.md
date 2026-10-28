@@ -57,8 +57,9 @@ The datasets as well as questions assessed during the NLQA can be seen [here](ht
 - **OWL (Turtle):** [`LinkML_hydro_test.owl`](./LinkML_hydro_test.owl)  
 - **Online version:** View [here](https://w3id.org/hmontology/)  
 - **Mapping files:** See [HydroTurtle](https://github.com/shamilasudalshana/NFDI4Earth-HydroTurtle2)
-- **Basic data model diagram:** 
-![alt text](image.png)
+- **Basic data model:** 
+<img width="784" height="366" alt="data_model" src="https://github.com/user-attachments/assets/c63775b6-d265-472e-b7fc-0f02f75eb1fa" />
+
 
 
 ---
