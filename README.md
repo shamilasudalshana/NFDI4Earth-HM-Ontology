@@ -60,12 +60,6 @@ The datasets as well as questions assessed during the NLQA can be seen [here](ht
 - **Basic data model diagram:** 
 ![alt text](image.png)
 
----
-
-## 📜 Citation
-
-If you use the HYOBS Ontology in your work, please cite: <code style="color : red"> tba</code>
-
 
 ---
 
@@ -79,5 +73,9 @@ If you use the HYOBS Ontology in your work, please cite: <code style="color : re
 ## 🙏 Acknowledgments
 
 This ontology is developed as part of the **[NFDI4Earth](https://www.nfdi4earth.de/)** initiative, aiming to advance research data management in Earth System Sciences. The work is funded by the German Research Foundation (DFG) under project number 460036893.
+
+## 📜 Citation
+
+If you use the HYOBS Ontology in your work, please cite: <code style="color : red"> tba</code>
 
 
