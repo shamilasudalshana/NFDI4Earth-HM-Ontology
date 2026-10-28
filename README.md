@@ -1,48 +1,83 @@
-# NFDI4Earth HydroOntology
+# NFDI4Earth HYOBS Ontology
 
-The **NFDI4Earth HydroOntology** is a lightweight, domain-specific ontology developed to describe hydrological concepts, variables, and relationships in a semantically consistent and machine-readable way. It is intended to support the **FAIR (Findable, Accessible, Interoperable, Reusable)** principles for hydrological data by enabling semantic annotation, RDF transformation, and integration into knowledge graphs.
+The **NFDI4Earth HYOBS Ontology** is a lightweight, domain-specific ontology for describing **hydrometeorological concepts, variables, and relationships** in a semantically consistent and machine-readable way.  
 
-This ontology was developed as part of [NFDI4Earth project](https://www.nfdi4earth.de/) focused on transforming conventional hydrology datasets (e.g., CSVs) into semantically enriched RDF knowledge graphs, enabling better interoperability, query capabilities, and integration with other datasets using Semantic Web technologies.
+It is designed to support the **FAIR** (Findable, Accessible, Interoperable, Reusable) principles for hydrological data by enabling semantic annotation, RDF transformation, and integration into knowledge graphs.
+
+This ontology is maintained in **LinkML** for modularity, validation, and easy export to OWL, JSON-LD, and other formats.
+
+---
+
+## 📍 Base URI and Prefix
+
+- **Base URI:** [https://w3id.org/hmontology/](https://w3id.org/hmontology/)  
+- **Recommended prefix:** `hyobs`
+
+---
 
 ## 🌊 Purpose and Scope
 
-Hydrological datasets are often shared in formats like CSV, which lack semantic annotations and thus pose challenges for data discovery, reuse, and automated reasoning. The **NFDI4Earth HydroOntology** addresses these challenges by:
+Hydrological datasets are often shared in formats like CSV, which lack semantic annotations, making data discovery, reuse, and automated reasoning difficult.  
 
-- Linking to existing vocabularies (e.g., SOSA, QUDT, EnvThes, Schema.org).
-- Supporting the semantic transformation of datasets such as **LamaH-CE**.
-- Enabling intelligent querying through **SPARQL** or integration with **question-answering systems**.
+The HYOBS Ontology addresses this by:
 
-## 📦 Repository Contents
+- Linking to widely used vocabularies (SOSA, QUDT, EnvThes, Schema.org, etc.).
+- Supporting the semantic transformation of datasets such as **LamaH-CE**, **CAMELS-GB** and **QUADICA**
+- Enabling integration into **knowledge graphs** for advanced querying and reasoning.
 
-- [`NFDI4Earth_HydroOntology_FULL.ttl`](./NFDI4Earth_HydroOntology_FULL.ttl): The full OWL ontology in Turtle syntax.
-- `README.md`: This documentation file describing the ontology and its usage.
+---
 
 ## 🚀 Key Features
 
-- OWL-compliant ontology built on RDF standards.
+- **OWL-compliant** and based on RDF(S) and OWL standards.
+- Built and maintained using **[LinkML](https://linkml.io/)**.
 - Alignments with:
-  - [SOSA/SSN](https://www.w3.org/TR/vocab-ssn/): For sensor and observation modeling.
-  - [QUDT](http://qudt.org/): For units and quantities.
-  - [EnvThes](https://vocabs.lter-europe.net/EnvThes/en/): For environmental related definitions. 
-  - [Schema.org](https://schema.org): For general-purpose descriptions.
-- Built-in support for mapping CSV columns to ontology concepts via custom mapping configuration.
+  - [SOSA/SSN](https://www.w3.org/TR/vocab-ssn/) – sensors and observations.
+  - [QUDT](http://qudt.org/) – units and quantities.
+  - [EnvThes](https://vocabs.lter-europe.net/EnvThes/en/) – environmental terminology.
+  - [Schema.org](https://schema.org/) – general-purpose concepts.
+- Support for mapping **CSV columns → ontology concepts** via [HydroTurtle](https://github.com/shamilasudalshana/NFDI4Earth-HydroTurtle).
 
-## 🧪 Example Use Case
+---
 
-The ontology was used to annotate and convert the [LamaH-CE](https://github.com/realwaterresearch/LamaH-CE) dataset to RDF using a custom-built tool called **HydroTurtle**. The annotated RDF knowledge graph enabled:
+## 🧪 Example Use Cases
 
-- Integration of catchment attributes and time series measurements.
-- Execution of SPARQL queries for hydrological analysis.
-- Natural Language Question Answering over RDF data.
+The ontology was used to annotate and convert three datasets (LamaH-CE, CAMELS-GB, QUADICA) to RDF. This enabled:
 
-## 🔗 Ontology URI and Prefix
+- Integration of **catchment attributes** and **time series** in a knowledge graph.
+- Complex **SPARQL queries** for hydrological analysis.
+- **Natural Language Question Answering (NLQA)** over hydrological RDF data.
 
-- Ontology base URI: [`https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#`](https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#)
-- Recommended prefix: `n4e_hyd`
+The datasets as well as questions assessed during the NLQA can be seen [here](https://github.com/aurioldegbelo/hints4text-to-sparql/).
 
-## Acknowledgments
-This ontology is developed as part of the [NFDI4Earth](https://www.nfdi4earth.de/) initiative, aiming to advance research data management in Earth System Sciences. The project is coordinated by Technische Universität Dresden and funded by the German Research Foundation (DFG) under project number 460036893.
+---
+
+## 🔗 Re-using the Ontology
+
+- **OWL (Turtle):** [`LinkML_hydro_test.owl`](./LinkML_hydro_test.owl)  
+- **Online version:** View [here](https://w3id.org/hmontology/)  
+- **Mapping files:** See [HydroTurtle](https://github.com/shamilasudalshana/NFDI4Earth-HydroTurtle2)
+- **Basic data model diagram:** 
+![alt text](image.png)
+
+---
+
+## 📜 Citation
+
+If you use the HYOBS Ontology in your work, please cite: <code style="color : red"> tba</code>
 
 
+---
+
+## 👥 Contact
+
+- **[Shamila Herath](mailto:lunde@adobe.com)**
+- **[Auriol Degbelo](https://sites.google.com/site/aurioldegbelo/)**
+
+---
+
+## 🙏 Acknowledgments
+
+This ontology is developed as part of the **[NFDI4Earth](https://www.nfdi4earth.de/)** initiative, aiming to advance research data management in Earth System Sciences. The work is funded by the German Research Foundation (DFG) under project number 460036893.
 
 

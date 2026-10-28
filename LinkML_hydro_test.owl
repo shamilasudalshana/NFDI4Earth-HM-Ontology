@@ -1,346 +1,2798 @@
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix hyobs: <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix envthes: <http://vocabs.lter-europe.net/EnvThes/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix hyobs: <https://w3id.org/hmontology/> .
+@prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hyobs:Geometry a owl:Class ;
+    rdfs:label "Geometry" ;
+    skos:definition "Spatial geometry associated with a sensor or catchment." ;
+    skos:exactMatch geo:Geometry ;
+    skos:inScheme hyobs:schema .
+
+hyobs:River a owl:Class ;
+    rdfs:label "River" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasRiverBasedRegion ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasRiverBasedRegion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty hyobs:hasRiverBasedRegion ] ;
+    skos:exactMatch envthes:20916 ;
+    skos:inScheme hyobs:schema .
+
+hyobs:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty hyobs:producesTimeseries ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:monitorsCatchment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:monitorsCatchment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:producesTimeseries ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hyobs:Catchment ;
+            owl:onProperty hyobs:monitorsCatchment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:producesTimeseries ] ;
+    skos:definition "A gauging station or sensor that monitors a hydrological catchment and may make observations." ;
+    skos:exactMatch sosa:Sensor ;
+    skos:inScheme hyobs:schema .
+
+hyobs:airTemperatureMeanAnnual a owl:DatatypeProperty ;
+    rdfs:label "airTemperatureMeanAnnual" ;
+    dct:title "Air Temperature Mean Annual" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: air temperature mean annual." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:areaRatio a owl:DatatypeProperty ;
+    rdfs:label "areaRatio" ;
+    dct:title "Area Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Ratio between variable area_calc of basin delineation A and area_gov" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:area_ratio a owl:DatatypeProperty ;
+    rdfs:label "area_ratio" ;
+    dct:title "Area Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: area ratio." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:bankfullFlow a owl:DatatypeProperty ;
+    rdfs:label "bankfullFlow" ;
+    dct:title "Bankfull Flow" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Flow at which the river begins to overflow the banks at a gauging station." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:benchmarkCatch a owl:DatatypeProperty ;
+    rdfs:label "benchmarkCatch" ;
+    dct:title "Benchmark Catchment" ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Indicator whether the catchment is a benchmark site." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:bodTotalYieldPerKm2PerYear a owl:DatatypeProperty ;
+    rdfs:label "bodTotalYieldPerKm2PerYear" ;
+    dct:title "BOD Total Yield Per Km 2 Per Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Annual yield of bod total yield per km 2 per year normalized by catchment area." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:bulkDensity a owl:DatatypeProperty ;
+    rdfs:label "bulkDensity" ;
+    dct:title "Bulk Density" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: bulk density." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:catchment_area_calculated a owl:DatatypeProperty ;
+    rdfs:label "catchment_area_calculated" ;
+    dct:title "Catchment Area Calculated" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: catchment area calculated." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:crs a owl:DatatypeProperty ;
+    rdfs:label "crs" ;
+    dct:title "CRS" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Coordinate reference system associated with a geometry, typically CRS84 for WKT geometries in longitude-latitude order." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:dailyObsStartYear a owl:DatatypeProperty ;
+    rdfs:label "dailyObsStartYear" ;
+    dct:title "Daily Obs Start Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: daily obs start year." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:ddhad a owl:DatatypeProperty ;
+    rdfs:label "ddhad" ;
+    dct:title "Ddhad" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: ddhad." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:depthToBedrock a owl:DatatypeProperty ;
+    rdfs:label "depthToBedrock" ;
+    dct:title "Depth to Bedrock" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: depth to bedrock." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:dischargeUncertaintyMetadata a owl:DatatypeProperty ;
+    rdfs:label "dischargeUncertaintyMetadata" ;
+    dct:title "Discharge Uncertainty Metadata" ;
+    rdfs:range xsd:string ;
+    skos:definition "Metadata explaining why discharge uncertainty estimates are (not) provided." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elevation10thPercentile a owl:DatatypeProperty ;
+    rdfs:label "elevation10thPercentile" ;
+    dct:title "10th Percentile Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: elevation 10 th percentile." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elevation90thPercentile a owl:DatatypeProperty ;
+    rdfs:label "elevation90thPercentile" ;
+    dct:title "90th Percentile Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: elevation 90 th percentile." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elevationGuage a owl:DatatypeProperty ;
+    rdfs:label "elevationGuage" ;
+    dct:title "Elevation of gauge" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Elevation of the gauge's zero point from mean sea level" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elevationRange a owl:DatatypeProperty ;
+    rdfs:label "elevationRange" ;
+    dct:title "Elevation Range" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: elevation range." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elonRatio a owl:DatatypeProperty ;
+    rdfs:label "elonRatio" ;
+    dct:title "Elongation Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Ratio between the diameter of an equivalent circle and the area of the catchment area to its length" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:elon_ratio a owl:DatatypeProperty ;
+    rdfs:label "elon_ratio" ;
+    dct:title "Elon Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: elon ratio." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:euHydroID a owl:DatatypeProperty ;
+    rdfs:label "euHydroID" ;
+    dct:title "EU-Hydro - River Network ID" ;
+    rdfs:range xsd:string ;
+    skos:definition "OBJECT_ID of the next river segment from stream network EU-Hydro - River Network Database" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:eu_Hydro_ID a owl:DatatypeProperty ;
+    rdfs:label "eu_Hydro_ID" ;
+    dct:title "Eu Hydro Id" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: eu hydro id." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:ewCount a owl:DatatypeProperty ;
+    rdfs:label "ewCount" ;
+    dct:title "Ew Count" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Count value for ew count." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fertilizerPerHa a owl:DatatypeProperty ;
+    rdfs:label "fertilizerPerHa" ;
+    dct:title "Fertilizer Per Ha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: fertilizer per ha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:flowPercentComplete a owl:DatatypeProperty ;
+    rdfs:label "flowPercentComplete" ;
+    dct:title "Flow Percent Complete" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of days with flow data available from 1 Oct 1970 to 31 Sep 2015." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:flowPeriodEnd a owl:DatatypeProperty ;
+    rdfs:label "flowPeriodEnd" ;
+    dct:title "Flow Period End" ;
+    rdfs:range xsd:date ;
+    skos:definition "End date that daily flow time series in CAMELS-GB are available for this gauging station." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:flowPeriodStart a owl:DatatypeProperty ;
+    rdfs:label "flowPeriodStart" ;
+    dct:title "Flow Period Start" ;
+    rdfs:range xsd:date ;
+    skos:definition "First date that daily flow time series in CAMELS-GB are available for this gauging station." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgriHetero a owl:DatatypeProperty ;
+    rdfs:label "fractionAgriHetero" ;
+    dct:title "Fraction Agri Hetero" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agri hetero for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgriHetero2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionAgriHetero2018" ;
+    dct:title "Fraction Agri Hetero 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agri hetero 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgriPerm a owl:DatatypeProperty ;
+    rdfs:label "fractionAgriPerm" ;
+    dct:title "Fraction Agri Perm" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agri perm for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgriPerm2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionAgriPerm2018" ;
+    dct:title "Fraction Agri Perm 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agri perm 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgric a owl:DatatypeProperty ;
+    rdfs:label "fractionAgric" ;
+    dct:title "Fraction Agric" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agric for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAgric2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionAgric2018" ;
+    dct:title "Fraction Agric 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction agric 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionArable a owl:DatatypeProperty ;
+    rdfs:label "fractionArable" ;
+    dct:title "Fraction Arable" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction arable for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionArable2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionArable2018" ;
+    dct:title "Fraction Arable 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction arable 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionAreaInGermany a owl:DatatypeProperty ;
+    rdfs:label "fractionAreaInGermany" ;
+    dct:title "Fraction Area In Germany" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction area in germany for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionArtif a owl:DatatypeProperty ;
+    rdfs:label "fractionArtif" ;
+    dct:title "Fraction Artif" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction artif for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionArtif2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionArtif2018" ;
+    dct:title "Fraction Artif 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction artif 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionCalc a owl:DatatypeProperty ;
+    rdfs:label "fractionCalc" ;
+    dct:title "Fraction Calc" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction calc for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionCalcSed a owl:DatatypeProperty ;
+    rdfs:label "fractionCalcSed" ;
+    dct:title "Fraction Calc Sed" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction calc sed for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionClay a owl:DatatypeProperty ;
+    rdfs:label "fractionClay" ;
+    dct:title "Fraction Clay" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction clay for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionClayAgri a owl:DatatypeProperty ;
+    rdfs:label "fractionClayAgri" ;
+    dct:title "Fraction Clay Agri" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction clay agri for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionConsol a owl:DatatypeProperty ;
+    rdfs:label "fractionConsol" ;
+    dct:title "Fraction Consol" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction consol for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionFiss1 a owl:DatatypeProperty ;
+    rdfs:label "fractionFiss1" ;
+    dct:title "Fraction Fiss 1" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction fiss 1 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionFiss2 a owl:DatatypeProperty ;
+    rdfs:label "fractionFiss2" ;
+    dct:title "Fraction Fiss 2" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction fiss 2 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionFissured a owl:DatatypeProperty ;
+    rdfs:label "fractionFissured" ;
+    dct:title "Fraction Fissured" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction fissured for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionFores a owl:DatatypeProperty ;
+    rdfs:label "fractionFores" ;
+    dct:title "Fraction Fores" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction fores for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionFores2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionFores2018" ;
+    dct:title "Fraction Fores 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction fores 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionForest a owl:DatatypeProperty ;
+    rdfs:label "fractionForest" ;
+    dct:title "Fraction Forest" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction forest for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionForest2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionForest2018" ;
+    dct:title "Fraction Forest 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction forest 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionGwsoils a owl:DatatypeProperty ;
+    rdfs:label "fractionGwsoils" ;
+    dct:title "Fraction Gwsoils" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction gwsoils for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionHard a owl:DatatypeProperty ;
+    rdfs:label "fractionHard" ;
+    dct:title "Fraction Hard" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction hard for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionHard1 a owl:DatatypeProperty ;
+    rdfs:label "fractionHard1" ;
+    dct:title "Fraction Hard 1" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction hard 1 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionHard2 a owl:DatatypeProperty ;
+    rdfs:label "fractionHard2" ;
+    dct:title "Fraction Hard 2" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction hard 2 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionIce a owl:DatatypeProperty ;
+    rdfs:label "fractionIce" ;
+    dct:title "Fraction Ice" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction ice for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionIndustry a owl:DatatypeProperty ;
+    rdfs:label "fractionIndustry" ;
+    dct:title "Fraction Industry" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction industry for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionIndustry2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionIndustry2018" ;
+    dct:title "Fraction Industry 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction industry 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionInwater a owl:DatatypeProperty ;
+    rdfs:label "fractionInwater" ;
+    dct:title "Fraction Inwater" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction inwater for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionMagma a owl:DatatypeProperty ;
+    rdfs:label "fractionMagma" ;
+    dct:title "Fraction Magma" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction magma for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionMetam a owl:DatatypeProperty ;
+    rdfs:label "fractionMetam" ;
+    dct:title "Fraction Metam" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction metam for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionMine a owl:DatatypeProperty ;
+    rdfs:label "fractionMine" ;
+    dct:title "Fraction Mine" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction mine for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionMine2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionMine2018" ;
+    dct:title "Fraction Mine 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction mine 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionNPointPopulation1991 a owl:DatatypeProperty ;
+    rdfs:label "fractionNPointPopulation1991" ;
+    dct:title "Fraction Npoint Population 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction npoint population 1991 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionNPointPopulation2010 a owl:DatatypeProperty ;
+    rdfs:label "fractionNPointPopulation2010" ;
+    dct:title "Fraction Npoint Population 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction npoint population 2010 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionNPointWwtp1991 a owl:DatatypeProperty ;
+    rdfs:label "fractionNPointWwtp1991" ;
+    dct:title "Fraction Npoint WWTP 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction npoint wwtp 1991 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionNPointWwtp2010 a owl:DatatypeProperty ;
+    rdfs:label "fractionNPointWwtp2010" ;
+    dct:title "Fraction Npoint WWTP 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction npoint wwtp 2010 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionOpen a owl:DatatypeProperty ;
+    rdfs:label "fractionOpen" ;
+    dct:title "Fraction Open" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction open for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionOpen2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionOpen2018" ;
+    dct:title "Fraction Open 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction open 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPartConsol a owl:DatatypeProperty ;
+    rdfs:label "fractionPartConsol" ;
+    dct:title "Fraction Part Consol" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction part consol for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPastures a owl:DatatypeProperty ;
+    rdfs:label "fractionPastures" ;
+    dct:title "Fraction Pastures" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction pastures for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPastures2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionPastures2018" ;
+    dct:title "Fraction Pastures 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction pastures 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPorous a owl:DatatypeProperty ;
+    rdfs:label "fractionPorous" ;
+    dct:title "Fraction Porous" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction porous for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPorous1 a owl:DatatypeProperty ;
+    rdfs:label "fractionPorous1" ;
+    dct:title "Fraction Porous 1" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction porous 1 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionPorous2 a owl:DatatypeProperty ;
+    rdfs:label "fractionPorous2" ;
+    dct:title "Fraction Porous 2" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction porous 2 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionSand a owl:DatatypeProperty ;
+    rdfs:label "fractionSand" ;
+    dct:title "Fraction Sand" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction sand for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionScrub a owl:DatatypeProperty ;
+    rdfs:label "fractionScrub" ;
+    dct:title "Fraction Scrub" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction scrub for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionScrub2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionScrub2018" ;
+    dct:title "Fraction Scrub 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction scrub 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionSedim a owl:DatatypeProperty ;
+    rdfs:label "fractionSedim" ;
+    dct:title "Fraction Sedim" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction sedim for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionSiliSed a owl:DatatypeProperty ;
+    rdfs:label "fractionSiliSed" ;
+    dct:title "Fraction Sili Sed" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction sili sed for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionSilic a owl:DatatypeProperty ;
+    rdfs:label "fractionSilic" ;
+    dct:title "Fraction Silic" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction silic for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionSilt a owl:DatatypeProperty ;
+    rdfs:label "fractionSilt" ;
+    dct:title "Fraction Silt" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction silt for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionUnconsol a owl:DatatypeProperty ;
+    rdfs:label "fractionUnconsol" ;
+    dct:title "Fraction Unconsol" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction unconsol for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionUrban a owl:DatatypeProperty ;
+    rdfs:label "fractionUrban" ;
+    dct:title "Fraction Urban" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction urban for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionUrban2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionUrban2018" ;
+    dct:title "Fraction Urban 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction urban 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionUrbanVeg a owl:DatatypeProperty ;
+    rdfs:label "fractionUrbanVeg" ;
+    dct:title "Fraction Urban Veg" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction urban veg for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionUrbanVeg2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionUrbanVeg2018" ;
+    dct:title "Fraction Urban Veg 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction urban veg 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionWater a owl:DatatypeProperty ;
+    rdfs:label "fractionWater" ;
+    dct:title "Fraction Water" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction water for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionWater2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionWater2018" ;
+    dct:title "Fraction Water 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction water 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionWetl a owl:DatatypeProperty ;
+    rdfs:label "fractionWetl" ;
+    dct:title "Fraction Wetl" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction wetl for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:fractionWetl2018 a owl:DatatypeProperty ;
+    rdfs:label "fractionWetl2018" ;
+    dct:title "Fraction Wetl 2018" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing fraction wetl 2018 for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:gapsPost a owl:DatatypeProperty ;
+    rdfs:label "gapsPost" ;
+    dct:title "Fraction of Gaps - Processed Hourly Runoff Time Series" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Represents Fraction of gaps in the hourly runoff time series after processing" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:gapsPre a owl:DatatypeProperty ;
+    rdfs:label "gapsPre" ;
+    dct:title "Fraction of Gaps - Raw Hourly Runoff Time Series" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Represents the fraction of gaps in the raw hourly runoff time series" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:gaps_post a owl:DatatypeProperty ;
+    rdfs:label "gaps_post" ;
+    dct:title "Gaps Post" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: gaps post." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:gaps_pre a owl:DatatypeProperty ;
+    rdfs:label "gaps_pre" ;
+    dct:title "Gaps Pre" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: gaps pre." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:govnrID a owl:DatatypeProperty ;
+    rdfs:label "govnrID" ;
+    dct:title "Govnr Id" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: govnr id." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasAcidPlutonicRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasAcidPlutonicRocksFraction" ;
+    dct:title "Acid Plutonic Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing acid plutonic rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasAcidVolcanicRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasAcidVolcanicRocksFraction" ;
+    dct:title "Acid Volcanic Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing acid volcanic rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasAgriculturalAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasAgriculturalAreaFraction" ;
+    dct:title "Agricultural Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing agricultural area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasAnalyte a owl:ObjectProperty ;
+    rdfs:label "hasAnalyte" ;
+    dct:title "Has Analyte" ;
+    rdfs:range hyobs:Analyte ;
+    skos:definition "Relates a water-quality observation to the chemical analyte or compound being measured." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBareAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasBareAreaFraction" ;
+    dct:title "Bare Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing bare area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBareSoilAndRockFraction a owl:DatatypeProperty ;
+    rdfs:label "hasBareSoilAndRockFraction" ;
+    dct:title "Has Bare Soil And Rock Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing bare soil and rock fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBaseflowIndexCEH a owl:DatatypeProperty ;
+    rdfs:label "hasBaseflowIndexCEH" ;
+    dct:title "Has Baseflow Index CEH" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has baseflow index ceh." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBaseflowIndexLadson a owl:DatatypeProperty ;
+    rdfs:label "hasBaseflowIndexLadson" ;
+    dct:title "Has Baseflow Index Ladson" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has baseflow index ladson." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBasicPlutonicRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasBasicPlutonicRocksFraction" ;
+    dct:title "Basic Plutonic Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing basic plutonic rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasBasicVolcanicRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasBasicVolcanicRocksFraction" ;
+    dct:title "Basic Volcanic Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing basic volcanic rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasCarbonateSedimentaryRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasCarbonateSedimentaryRocksFraction" ;
+    dct:title "Carbonate Sedimentary Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing carbonate sedimentary rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasClayFraction a owl:DatatypeProperty ;
+    rdfs:label "hasClayFraction" ;
+    dct:title "Clay Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing clay fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasCropCoverFraction a owl:DatatypeProperty ;
+    rdfs:label "hasCropCoverFraction" ;
+    dct:title "Has Crop Cover Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing crop cover fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasDeciduousWoodlandFraction a owl:DatatypeProperty ;
+    rdfs:label "hasDeciduousWoodlandFraction" ;
+    dct:title "Has Deciduous Woodland Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing deciduous woodland fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasDepthToBedrock a owl:DatatypeProperty ;
+    rdfs:label "hasDepthToBedrock" ;
+    dct:title "Depth to Bedrock" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Depth to bedrock from the surface of a point or an area" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasDepthtoBedrock a owl:DatatypeProperty ;
+    rdfs:label "hasDepthtoBedrock" ;
+    dct:title "Has Depthto Bedrock" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has depthto bedrock." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasDominantGeologicalClass a owl:DatatypeProperty ;
     rdfs:label "hasDominantGeologicalClass" ;
-    dcterms:title "Has Dominant Geological Class" ;
+    dct:title "Has Dominant Geological Class" ;
     rdfs:range xsd:string ;
-    skos:definition "Has Dominant Geological Class" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has dominant geological class." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasEvergreenWoodlandFraction a owl:DatatypeProperty ;
+    rdfs:label "hasEvergreenWoodlandFraction" ;
+    dct:title "Has Evergreen Woodland Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing evergreen woodland fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasFlowDurationCurveSlope a owl:DatatypeProperty ;
+    rdfs:label "hasFlowDurationCurveSlope" ;
+    dct:title "Has Flow Duration Curve Slope" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has flow duration curve slope." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasForestAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasForestAreaFraction" ;
+    dct:title "Forest Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing forest area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasGlacierAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasGlacierAreaFraction" ;
+    dct:title "Glacier Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing glacier area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasGrassCoverFraction a owl:DatatypeProperty ;
+    rdfs:label "hasGrassCoverFraction" ;
+    dct:title "Has Grass Cover Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing grass cover fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasGravelFraction a owl:DatatypeProperty ;
+    rdfs:label "hasGravelFraction" ;
+    dct:title "Gravel Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Gravel fraction of a soil material" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasHighFlowDuration a owl:DatatypeProperty ;
+    rdfs:label "hasHighFlowDuration" ;
+    dct:title "Has High Flow Duration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has high flow duration." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasHighFlowFrequency a owl:DatatypeProperty ;
+    rdfs:label "hasHighFlowFrequency" ;
+    dct:title "Has High Flow Frequency" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has high flow frequency." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasHighFlowQuantile95 a owl:DatatypeProperty ;
+    rdfs:label "hasHighFlowQuantile95" ;
+    dct:title "Has High Flow Quantile 95%" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "High-flow quantile corresponding to the 95th percentile of streamflow." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasHighPrecFrequency a owl:DatatypeProperty ;
+    rdfs:label "hasHighPrecFrequency" ;
+    dct:title "High Precipitation Frequency" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has high prec frequency." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasHighPrecipitationDuration a owl:DatatypeProperty ;
+    rdfs:label "hasHighPrecipitationDuration" ;
+    dct:title "High Precipitation Duration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has high precipitation duration." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasIceAndGlacierFraction a owl:DatatypeProperty ;
+    rdfs:label "hasIceAndGlacierFraction" ;
+    dct:title "Ice and Glacier Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing ice and glacier fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasInlandWaterCoverFraction a owl:DatatypeProperty ;
+    rdfs:label "hasInlandWaterCoverFraction" ;
+    dct:title "Has Inland Water Cover Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing inland water cover fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasIntermediatePlutonicRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasIntermediatePlutonicRocksFraction" ;
+    dct:title "Intermediate Plutonic Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing intermediate plutonic rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLakeAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasLakeAreaFraction" ;
+    dct:title "Lake Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing lake area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLowFlowDuration a owl:DatatypeProperty ;
+    rdfs:label "hasLowFlowDuration" ;
+    dct:title "Has Low Flow Duration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has low flow duration." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLowFlowFrequency a owl:DatatypeProperty ;
+    rdfs:label "hasLowFlowFrequency" ;
+    dct:title "Has Low Flow Frequency" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has low flow frequency." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLowFlowQuantile5 a owl:DatatypeProperty ;
+    rdfs:label "hasLowFlowQuantile5" ;
+    dct:title "Has Low Flow Quantile 5%" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Low-flow quantile corresponding to the 5th percentile of streamflow." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLowPrecFrequency a owl:DatatypeProperty ;
+    rdfs:label "hasLowPrecFrequency" ;
+    dct:title "Low Precipitation Frequency" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has low prec frequency." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasLowPrecipitationDuration a owl:DatatypeProperty ;
+    rdfs:label "hasLowPrecipitationDuration" ;
+    dct:title "Low Precipitation Duration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has low precipitation duration." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMaxGreenVegetationFraction a owl:DatatypeProperty ;
+    rdfs:label "hasMaxGreenVegetationFraction" ;
+    dct:title "Maximum Green Vegetation Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing max green vegetation fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMaxLeafAreaIndex a owl:DatatypeProperty ;
+    rdfs:label "hasMaxLeafAreaIndex" ;
+    dct:title "Maximum Average Leaf Area Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has max leaf area index." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMaxNDVI a owl:DatatypeProperty ;
+    rdfs:label "hasMaxNDVI" ;
+    dct:title "Maximum Average NDVI" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has max ndvi." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMeanDischarge a owl:DatatypeProperty ;
+    rdfs:label "hasMeanDischarge" ;
+    dct:title "Has Mean Discharge" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Mean daily discharge." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMeanHalfFlowDate a owl:DatatypeProperty ;
+    rdfs:label "hasMeanHalfFlowDate" ;
+    dct:title "Has Mean Half Flow Date" ;
+    rdfs:range xsd:date ;
+    skos:definition "Date value for has mean half flow date." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMetamorphitesFraction a owl:DatatypeProperty ;
+    rdfs:label "hasMetamorphitesFraction" ;
+    dct:title "Metamorphites Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing metamorphites fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMinNDVI a owl:DatatypeProperty ;
+    rdfs:label "hasMinNDVI" ;
+    dct:title "Minimum Average NDVI" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has min ndvi." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMixedSedimentaryRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasMixedSedimentaryRocksFraction" ;
+    dct:title "Mixed Sedimentary Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing mixed sedimentary rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasObsBegTime a owl:DatatypeProperty ;
+    rdfs:label "hasObsBegTime" ;
+    dct:title "Starting Time of Daily Runoff Time Series" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specific date/year when the daily runoff time series in the dataset begins" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasOrganicFraction a owl:DatatypeProperty ;
+    rdfs:label "hasOrganicFraction" ;
+    dct:title "Organic Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing organic fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasPSeason a owl:DatatypeProperty ;
+    rdfs:label "hasPSeason" ;
+    dct:title "Precipitation Seasonality" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Seasonality and timing of precipitation using sine curves; positive values for summer-dominated, negative for winter-dominated precipitation" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasPyroclasticsFraction a owl:DatatypeProperty ;
+    rdfs:label "hasPyroclasticsFraction" ;
+    dct:title "Pyroclastics Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing pyroclastics fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasRangeGreenVegetationFraction a owl:DatatypeProperty ;
+    rdfs:label "hasRangeGreenVegetationFraction" ;
+    dct:title "Range of Green Vegetation Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing range green vegetation fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasRangeLeafAreaIndex a owl:DatatypeProperty ;
+    rdfs:label "hasRangeLeafAreaIndex" ;
+    dct:title "Range of Average Leaf Area Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has range leaf area index." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasReciprocalAridityIndex a owl:DatatypeProperty ;
+    rdfs:label "hasReciprocalAridityIndex" ;
+    dct:title "Reciprocal Aridity Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has reciprocal aridity index." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasReferenceEvapotranspiration a owl:DatatypeProperty ;
+    rdfs:label "hasReferenceEvapotranspiration" ;
+    dct:title "Reference Evapotranspiration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has reference evapotranspiration." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasRootDepth a owl:DatatypeProperty ;
+    rdfs:label "hasRootDepth" ;
+    dct:title "Available Root Depth" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Depth available for roots in soil layer from the surface" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasRootdepth a owl:DatatypeProperty ;
+    rdfs:label "hasRootdepth" ;
+    dct:title "Has Rootdepth" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has rootdepth." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSandFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSandFraction" ;
+    dct:title "Sand Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing sand fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasSaturatedHydraulicConductivity a owl:DatatypeProperty ;
     rdfs:label "hasSaturatedHydraulicConductivity" ;
-    dcterms:title "has Saturated Hydraulic Conductivity" ;
+    dct:title "has Saturated Hydraulic Conductivity" ;
     rdfs:range xsd:decimal ;
-    skos:definition "has Saturated Hydraulic Conductivity" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has saturated hydraulic conductivity." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasShrubCoverFraction a owl:DatatypeProperty ;
+    rdfs:label "hasShrubCoverFraction" ;
+    dct:title "Has Shrub Cover Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing shrub cover fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSiliciclasticSedimentaryRocksFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSiliciclasticSedimentaryRocksFraction" ;
+    dct:title "Siliciclastic Sedimentary Rocks Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing siliciclastic sedimentary rocks fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSiltFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSiltFraction" ;
+    dct:title "Silt Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing silt fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasSoil a owl:DatatypeProperty ;
     rdfs:label "hasSoil" ;
-    dcterms:title "Has soil" ;
+    dct:title "Has soil" ;
     rdfs:range xsd:string ;
-    skos:definition "Connects an area or point to its soil" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Connects an area or a point to the soil" ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasSoilPorosity a owl:DatatypeProperty ;
     rdfs:label "hasSoilPorosity" ;
-    dcterms:title "Soil porosity" ;
+    dct:title "Soil porosity" ;
     rdfs:range xsd:string ;
-    skos:definition "Soil porosity" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has soil porosity." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasSoilTexture a owl:DatatypeProperty ;
     rdfs:label "hasSoilTexture" ;
-    dcterms:title "has soil texture" ;
+    dct:title "has soil texture" ;
     rdfs:range xsd:string ;
     skos:definition "has soil texture" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:hasStreamflowElasticity a owl:DatatypeProperty ;
+    rdfs:label "hasStreamflowElasticity" ;
+    dct:title "Has Streamflow Elasticity" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has streamflow elasticity." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasStrmDensity a owl:DatatypeProperty ;
+    rdfs:label "hasStrmDensity" ;
+    dct:title "Stream Density" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Ratio of lengths of streams LF and the catchment area A, DF=sumLFA" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSubsurfacePermeabilityFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSubsurfacePermeabilityFraction" ;
+    dct:title "Subsurface Permeability Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing subsurface permeability fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSubsurfacePorosityFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSubsurfacePorosityFraction" ;
+    dct:title "Subsurface Porosity Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing subsurface porosity fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasTotalAvailableWaterContent a owl:DatatypeProperty ;
+    rdfs:label "hasTotalAvailableWaterContent" ;
+    dct:title "Total Available Water Content" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has total available water content." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasUnconsolidatedSedimentsFraction a owl:DatatypeProperty ;
+    rdfs:label "hasUnconsolidatedSedimentsFraction" ;
+    dct:title "Unconsolidated Sediments Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing unconsolidated sediments fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasUrbanAreaFraction a owl:DatatypeProperty ;
+    rdfs:label "hasUrbanAreaFraction" ;
+    dct:title "Urban Area Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing urban area fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasUrbanCoverFraction a owl:DatatypeProperty ;
+    rdfs:label "hasUrbanCoverFraction" ;
+    dct:title "Has Urban Cover Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing urban cover fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasWaterBodiesFraction a owl:DatatypeProperty ;
+    rdfs:label "hasWaterBodiesFraction" ;
+    dct:title "Water Bodies Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing water bodies fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasZeroFlowFraction a owl:DatatypeProperty ;
+    rdfs:label "hasZeroFlowFraction" ;
+    dct:title "Has Zero Flow Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fractional value describing zero flow fraction for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:has_Strm_density a owl:DatatypeProperty ;
+    rdfs:label "has_Strm_density" ;
+    dct:title "Has Strm Density" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: has strm density." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hourlyObsStartYear a owl:DatatypeProperty ;
+    rdfs:label "hourlyObsStartYear" ;
+    dct:title "Hourly Obs Start Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: hourly obs start year." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hyrivID a owl:DatatypeProperty ;
+    rdfs:label "hyrivID" ;
+    dct:title "RiverATLAS ID" ;
+    rdfs:range xsd:string ;
+    skos:definition "HYRIV_ID of the next river segment from stream network RiverATLAS" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hyriv_ID a owl:DatatypeProperty ;
+    rdfs:label "hyriv_ID" ;
+    dct:title "Hyriv Id" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: hyriv id." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:issueID a owl:ObjectProperty ;
     rdfs:label "issueID" ;
-    dcterms:title "Issue i d" ;
+    dct:title "Issue i d" ;
     rdfs:range hyobs:GovnrID ;
     skos:definition "Official gauge number from the associated governments." ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
-<https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd.owl.ttl> a owl:Ontology ;
-    rdfs:label "NFDI4EarthHydroOntology" ;
-    skos:definition "Ontology for hydrological obersvation variables and time series data, converted to LinkML." .
+hyobs:leafAreaIndexM01 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM01" ;
+    dct:title "Leaf Area Index M 01" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 01." ;
+    skos:inScheme hyobs:schema .
 
-<hyobs:Sosa:Sensor> a owl:Class ;
-    rdfs:label "sosa:Sensor" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty hyobs:producesTimeseries ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty hyobs:monitorsCatchment ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty hyobs:monitorsCatchment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty hyobs:producesTimeseries ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <hyobs:Envthes:10092> ;
-            owl:onProperty hyobs:monitorsCatchment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty hyobs:producesTimeseries ] ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+hyobs:leafAreaIndexM02 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM02" ;
+    dct:title "Leaf Area Index M 02" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 02." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM03 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM03" ;
+    dct:title "Leaf Area Index M 03" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 03." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM04 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM04" ;
+    dct:title "Leaf Area Index M 04" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 04." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM05 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM05" ;
+    dct:title "Leaf Area Index M 05" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 05." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM06 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM06" ;
+    dct:title "Leaf Area Index M 06" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 06." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM07 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM07" ;
+    dct:title "Leaf Area Index M 07" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 07." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM08 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM08" ;
+    dct:title "Leaf Area Index M 08" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 08." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM09 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM09" ;
+    dct:title "Leaf Area Index M 09" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 09." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM10 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM10" ;
+    dct:title "Leaf Area Index M 10" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 10." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM11 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM11" ;
+    dct:title "Leaf Area Index M 11" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 11." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:leafAreaIndexM12 a owl:DatatypeProperty ;
+    rdfs:label "leafAreaIndexM12" ;
+    dct:title "Leaf Area Index M 12" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: leaf area index m 12." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:manurePerHa a owl:DatatypeProperty ;
+    rdfs:label "manurePerHa" ;
+    dct:title "Manure Per Ha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: manure per ha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanDailyDischarge a owl:DatatypeProperty ;
+    rdfs:label "meanDailyDischarge" ;
+    dct:title "Mean Daily Discharge" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: mean daily discharge." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanDischarges a owl:DatatypeProperty ;
+    rdfs:label "meanDischarges" ;
+    dct:title "Mean Discharges" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Mean daily discharges into water courses from permit holders." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanGroundwaterAbstraction a owl:DatatypeProperty ;
+    rdfs:label "meanGroundwaterAbstraction" ;
+    dct:title "Mean Groundwater Abstraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Average volume of groundwater abstracted." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanSurfaceWaterAbstraction a owl:DatatypeProperty ;
+    rdfs:label "meanSurfaceWaterAbstraction" ;
+    dct:title "Mean Surface Water Abstraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Average volume of surface water abstracted." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nPointPopulation1991 a owl:DatatypeProperty ;
+    rdfs:label "nPointPopulation1991" ;
+    dct:title "N Point Population 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n point population 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nPointPopulation2010 a owl:DatatypeProperty ;
+    rdfs:label "nPointPopulation2010" ;
+    dct:title "N Point Population 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n point population 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nPointWwtp1991 a owl:DatatypeProperty ;
+    rdfs:label "nPointWwtp1991" ;
+    dct:title "N Point WWTP 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n point wwtp 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nPointWwtp2010 a owl:DatatypeProperty ;
+    rdfs:label "nPointWwtp2010" ;
+    dct:title "N Point WWTP 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n point wwtp 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nSurplusBatool1991 a owl:DatatypeProperty ;
+    rdfs:label "nSurplusBatool1991" ;
+    dct:title "N Surplus Batool 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n surplus batool 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nSurplusBatool2010 a owl:DatatypeProperty ;
+    rdfs:label "nSurplusBatool2010" ;
+    dct:title "N Surplus Batool 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n surplus batool 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nSurplusHaussermann1991 a owl:DatatypeProperty ;
+    rdfs:label "nSurplusHaussermann1991" ;
+    dct:title "N Surplus Haussermann 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n surplus haussermann 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nSurplusHaussermann2010 a owl:DatatypeProperty ;
+    rdfs:label "nSurplusHaussermann2010" ;
+    dct:title "N Surplus Haussermann 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for n surplus haussermann 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nitrogenTotalYieldPerKm2PerYear a owl:DatatypeProperty ;
+    rdfs:label "nitrogenTotalYieldPerKm2PerYear" ;
+    dct:title "Nitrogen Total Yield Per Km 2 Per Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for nitrogen total yield per km 2 per year." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:nitrogenTotalYieldYEW a owl:DatatypeProperty ;
+    rdfs:label "nitrogenTotalYieldYEW" ;
+    dct:title "Nitrogen Total Yield Yew" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Count value for nitrogen total yield yew." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:numberOfReservoirs a owl:DatatypeProperty ;
+    rdfs:label "numberOfReservoirs" ;
+    dct:title "Number of Reservoirs" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Number of reservoirs in the catchment." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:obsBegDaily a owl:DatatypeProperty ;
+    rdfs:label "obsBegDaily" ;
+    dct:title "Starting Year of Daily Runoff Time Series" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Year when the daily runoff time series in the dataset begins" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:obsBegHr a owl:DatatypeProperty ;
+    rdfs:label "obsBegHr" ;
+    dct:title "Starting Year of hourly Runoff Time Series" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Year when the hourly runoff time series in the dataset begins" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:obsEndHr a owl:DatatypeProperty ;
+    rdfs:label "obsEndHr" ;
+    dct:title "Observation End Year" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Year when the continuous runoff data recording ended, use '0' if ongoing" ;
+    skos:inScheme hyobs:schema .
+
+hyobs:obsEndYear a owl:DatatypeProperty ;
+    rdfs:label "obsEndYear" ;
+    dct:title "Obs End Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: obs end year." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pPointPopulation1991 a owl:DatatypeProperty ;
+    rdfs:label "pPointPopulation1991" ;
+    dct:title "P Point Population 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p point population 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pPointPopulation2010 a owl:DatatypeProperty ;
+    rdfs:label "pPointPopulation2010" ;
+    dct:title "P Point Population 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p point population 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pPointWwtp1991 a owl:DatatypeProperty ;
+    rdfs:label "pPointWwtp1991" ;
+    dct:title "P Point WWTP 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p point wwtp 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pPointWwtp2010 a owl:DatatypeProperty ;
+    rdfs:label "pPointWwtp2010" ;
+    dct:title "P Point WWTP 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p point wwtp 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pSurplusBatool1991 a owl:DatatypeProperty ;
+    rdfs:label "pSurplusBatool1991" ;
+    dct:title "P Surplus Batool 1991" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p surplus batool 1991." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pSurplusBatool2010 a owl:DatatypeProperty ;
+    rdfs:label "pSurplusBatool2010" ;
+    dct:title "P Surplus Batool 2010" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: p surplus batool 2010." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionAgriculture a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionAgriculture" ;
+    dct:title "percentage Abstraction for Agriculture" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for agriculture." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionAmenities a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionAmenities" ;
+    dct:title "percentage Abstraction for Amenities" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for amenities." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionEnergy a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionEnergy" ;
+    dct:title "percentage Abstraction for Energy" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for energy production." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionEnvironmental a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionEnvironmental" ;
+    dct:title "percentage Abstraction for Environment" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for environmental purposes." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionIndustry a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionIndustry" ;
+    dct:title "percentage Abstraction for Industry" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for industrial, commercial and public services." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctAbstractionWaterSupply a owl:DatatypeProperty ;
+    rdfs:label "pctAbstractionWaterSupply" ;
+    dct:title "percentage Abstraction for Water Supply" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total abstractions for water supply." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirDrainage a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirDrainage" ;
+    dct:title "Percentage Reservoir Use for Drainage" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for drainage." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirEnvironmental a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirEnvironmental" ;
+    dct:title "Percentage Reservoir Use for Environment" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for environmental purposes." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirFloodStorage a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirFloodStorage" ;
+    dct:title "Percentage Reservoir Use for Flood Storage" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for flood storage." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirHydroelectric a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirHydroelectric" ;
+    dct:title "Reservoir Use for Hydroelectricity" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for hydroelectricity." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirNavigation a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirNavigation" ;
+    dct:title "Percentage Reservoir Use for Navigation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for navigation." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirUnknownUse a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirUnknownUse" ;
+    dct:title "Percentage Reservoir Use Unknown" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage where no use data were available." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:pctReservoirWaterResources a owl:DatatypeProperty ;
+    rdfs:label "pctReservoirWaterResources" ;
+    dct:title "Percentage Reservoir Use for Water Resources" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Percentage of total reservoir storage used for water resources." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:petAnnualMm a owl:DatatypeProperty ;
+    rdfs:label "petAnnualMm" ;
+    dct:title "PET Annual Mm" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: pet annual mm." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusAtmosphericDeposition a owl:DatatypeProperty ;
+    rdfs:label "phosphorusAtmosphericDeposition" ;
+    dct:title "Phosphorus Atmospheric Deposition" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus atmospheric deposition." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusAvailable a owl:DatatypeProperty ;
+    rdfs:label "phosphorusAvailable" ;
+    dct:title "Phosphorus Available" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus available." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusAvailableAgricultural a owl:DatatypeProperty ;
+    rdfs:label "phosphorusAvailableAgricultural" ;
+    dct:title "Phosphorus Available Agricultural" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus available agricultural." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusChemicalFertilizer a owl:DatatypeProperty ;
+    rdfs:label "phosphorusChemicalFertilizer" ;
+    dct:title "Phosphorus Chemical Fertilizer" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus chemical fertilizer." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusInput a owl:DatatypeProperty ;
+    rdfs:label "phosphorusInput" ;
+    dct:title "Phosphorus Input" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus input." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusOutputPerHa a owl:DatatypeProperty ;
+    rdfs:label "phosphorusOutputPerHa" ;
+    dct:title "Phosphorus Output Per Ha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus output per ha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusRemovalPerHa a owl:DatatypeProperty ;
+    rdfs:label "phosphorusRemovalPerHa" ;
+    dct:title "Phosphorus Removal Per Ha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus removal per ha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusSurplus a owl:DatatypeProperty ;
+    rdfs:label "phosphorusSurplus" ;
+    dct:title "Phosphorus Surplus" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus surplus." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusTotal a owl:DatatypeProperty ;
+    rdfs:label "phosphorusTotal" ;
+    dct:title "Phosphorus Total" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus total." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusTotalAgricultural a owl:DatatypeProperty ;
+    rdfs:label "phosphorusTotalAgricultural" ;
+    dct:title "Phosphorus Total Agricultural" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus total agricultural." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusTotalYieldPerKm2PerYear a owl:DatatypeProperty ;
+    rdfs:label "phosphorusTotalYieldPerKm2PerYear" ;
+    dct:title "Phosphorus Total Yield Per Km 2 Per Year" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Annual yield of phosphorus total yield per km 2 per year normalized by catchment area." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusTotalYieldYEW a owl:DatatypeProperty ;
+    rdfs:label "phosphorusTotalYieldYEW" ;
+    dct:title "Phosphorus Total Yield Yew" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus total yield yew." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:phosphorusUptakePerHa a owl:DatatypeProperty ;
+    rdfs:label "phosphorusUptakePerHa" ;
+    dct:title "Phosphorus Uptake Per Ha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: phosphorus uptake per ha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:populationDensityPerKm2 a owl:DatatypeProperty ;
+    rdfs:label "populationDensityPerKm2" ;
+    dct:title "Population Density Per Km 2" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: population density per km 2." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipAlpha a owl:DatatypeProperty ;
+    rdfs:label "precipAlpha" ;
+    dct:title "Precip Alpha" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: precip alpha." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipLambda a owl:DatatypeProperty ;
+    rdfs:label "precipLambda" ;
+    dct:title "Precip Lambda" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: precip lambda." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipSeasonalityIndexSw a owl:DatatypeProperty ;
+    rdfs:label "precipSeasonalityIndexSw" ;
+    dct:title "Precip Seasonality Index Sw" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: precip seasonality index sw." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipitationAnnualMm a owl:DatatypeProperty ;
+    rdfs:label "precipitationAnnualMm" ;
+    dct:title "Precipitation Annual Mm" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: precipitation annual mm." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qCoefficientOfVariation a owl:DatatypeProperty ;
+    rdfs:label "qCoefficientOfVariation" ;
+    dct:title "Q Coefficient Of Variation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q coefficient of variation." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qEndDate a owl:DatatypeProperty ;
+    rdfs:label "qEndDate" ;
+    dct:title "Q End Date" ;
+    rdfs:range xsd:date ;
+    skos:definition "End date of the discharge observation period." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qGapsFraction a owl:DatatypeProperty ;
+    rdfs:label "qGapsFraction" ;
+    dct:title "Q Gaps Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q gaps fraction." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qMean a owl:DatatypeProperty ;
+    rdfs:label "qMean" ;
+    dct:title "Q Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q mean." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qMedian a owl:DatatypeProperty ;
+    rdfs:label "qMedian" ;
+    dct:title "Q Median" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q median." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qMedianSummer a owl:DatatypeProperty ;
+    rdfs:label "qMedianSummer" ;
+    dct:title "Q Median Summer" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q median summer." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qMedianWinter a owl:DatatypeProperty ;
+    rdfs:label "qMedianWinter" ;
+    dct:title "Q Median Winter" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q median winter." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qMissingCount a owl:DatatypeProperty ;
+    rdfs:label "qMissingCount" ;
+    dct:title "Q Missing Count" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Count value for q missing count." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qSpecificDischarge a owl:DatatypeProperty ;
+    rdfs:label "qSpecificDischarge" ;
+    dct:title "Q Specific Discharge" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q specific discharge." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qStartDate a owl:DatatypeProperty ;
+    rdfs:label "qStartDate" ;
+    dct:title "Q Start Date" ;
+    rdfs:range xsd:date ;
+    skos:definition "Start date of the discharge observation period." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:qSummerToWinterRatio a owl:DatatypeProperty ;
+    rdfs:label "qSummerToWinterRatio" ;
+    dct:title "Q Summer To Winter Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: q summer to winter ratio." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:reservoirStorageMegalitres a owl:DatatypeProperty ;
+    rdfs:label "reservoirStorageMegalitres" ;
+    dct:title "Reservoir Storage (ML)" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Total storage capacity of reservoirs in the catchment in megalitres." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:rootDepth a owl:DatatypeProperty ;
+    rdfs:label "rootDepth" ;
+    dct:title "Root Depth" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: root depth." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:rootZoneAvailableWater a owl:DatatypeProperty ;
+    rdfs:label "rootZoneAvailableWater" ;
+    dct:title "Root Zone Available Water" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: root zone available water." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:saturatedHydraulicConductivityPTF_SandClay a owl:DatatypeProperty ;
+    rdfs:label "saturatedHydraulicConductivityPTF_SandClay" ;
+    dct:title "Saturated Hydraulic Conductivity Ptf Sand Clay" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: saturated hydraulic conductivity ptf sand clay." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:saturatedHydraulicConductivityPTF_SiltClayOM a owl:DatatypeProperty ;
+    rdfs:label "saturatedHydraulicConductivityPTF_SiltClayOM" ;
+    dct:title "Saturated Hydraulic Conductivity Ptf Silt Clay Om" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: saturated hydraulic conductivity ptf silt clay om." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:saturatedHydraulicConductivityPtfSandClay a owl:DatatypeProperty ;
+    rdfs:label "saturatedHydraulicConductivityPtfSandClay" ;
+    dct:title "Saturated Hydraulic Conductivity (Sand & Clay PTF)" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Saturated hydraulic conductivity estimated using a PTF based on sand and clay fractions." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:saturatedHydraulicConductivityPtfSiltClayOm a owl:DatatypeProperty ;
+    rdfs:label "saturatedHydraulicConductivityPtfSiltClayOm" ;
+    dct:title "Saturated Hydraulic Conductivity (Silt, Clay, OM PTF)" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Estimated using a PTF based on silt/clay/OM/bulk density and topsoil." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:schema.owl.ttl a owl:Ontology ;
+    rdfs:label "Hydro-Knowledge-Graph-Vocabulary" ;
+    skos:definition "LinkML schema for the Hydro-Knowledge Graph vocabulary used to annotate hydrological sensors, catchments, geometries, observations, environmental properties, hydrometeorological variables, and water-quality variables across LamaH-CE, CAMELS-GB, and QUADICA." .
+
+hyobs:soilCarbonNitrogenRatioMean a owl:DatatypeProperty ;
+    rdfs:label "soilCarbonNitrogenRatioMean" ;
+    dct:title "Soil Carbon Nitrogen Ratio Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil carbon nitrogen ratio mean." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:soilNitrogenMean a owl:DatatypeProperty ;
+    rdfs:label "soilNitrogenMean" ;
+    dct:title "Soil Nitrogen Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil nitrogen mean." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:soilPhCaCl a owl:DatatypeProperty ;
+    rdfs:label "soilPhCaCl" ;
+    dct:title "Soil Ph Ca Cl" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil ph ca cl." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:soilPhH2O a owl:DatatypeProperty ;
+    rdfs:label "soilPhH2O" ;
+    dct:title "Soil Ph H 2 O" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil ph h 2 o." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:soilPhosphorusMean a owl:DatatypeProperty ;
+    rdfs:label "soilPhosphorusMean" ;
+    dct:title "Soil Phosphorus Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil phosphorus mean." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:soilThetaS a owl:DatatypeProperty ;
+    rdfs:label "soilThetaS" ;
+    dct:title "Soil Theta S" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: soil theta s." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:standardDeviationElevation a owl:DatatypeProperty ;
+    rdfs:label "standardDeviationElevation" ;
+    dct:title "Standard Deviation of Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: standard deviation elevation." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:strahlerOrder a owl:DatatypeProperty ;
+    rdfs:label "strahlerOrder" ;
+    dct:title "Strahler Order" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Hydrological or environmental attribute: strahler order." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:structurefullFlow a owl:DatatypeProperty ;
+    rdfs:label "structurefullFlow" ;
+    dct:title "Structurefull Flow" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Flow at which the river reaches the wingwalls of a structure at a gauging station." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:totalAvailableWaterContent a owl:DatatypeProperty ;
+    rdfs:label "totalAvailableWaterContent" ;
+    dct:title "Total Available Water Content" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: total available water content." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:twiMean a owl:DatatypeProperty ;
+    rdfs:label "twiMean" ;
+    dct:title "TWI Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: twi mean." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:twiMedian a owl:DatatypeProperty ;
+    rdfs:label "twiMedian" ;
+    dct:title "TWI Median" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: twi median." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:twiP90 a owl:DatatypeProperty ;
+    rdfs:label "twiP90" ;
+    dct:title "TWI P 90" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: twi p 90." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:uncertaintyLower a owl:DatatypeProperty ;
+    rdfs:label "uncertaintyLower" ;
+    dct:title "Uncertainty Lower" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Lower bound of discharge uncertainty interval for XX percentile flow, as percentage." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:uncertaintyUpper a owl:DatatypeProperty ;
+    rdfs:label "uncertaintyUpper" ;
+    dct:title "Uncertainty Upper" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Upper bound of discharge uncertainty interval for XX percentile flow, as percentage." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:uwwtpCount a owl:DatatypeProperty ;
+    rdfs:label "uwwtpCount" ;
+    dct:title "Uwwtp Count" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Count value for uwwtp count." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:volumetricPorosityPTF_SandClay a owl:DatatypeProperty ;
+    rdfs:label "volumetricPorosityPTF_SandClay" ;
+    dct:title "Volumetric Porosity Ptf Sand Clay" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological or environmental attribute: volumetric porosity ptf sand clay." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:volumetricPorosityPtfSandClay a owl:DatatypeProperty ;
+    rdfs:label "volumetricPorosityPtfSandClay" ;
+    dct:title "Volumetric Porosity (Sand & Clay PTF)" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Volumetric porosity estimated using a pedo-transfer function based on sand and clay fractions." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:volumetricPorosityPtfSiltClayOm a owl:DatatypeProperty ;
+    rdfs:label "volumetricPorosityPtfSiltClayOm" ;
+    dct:title "Volumetric Porosity (Silt, Clay, OM PTF)" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Volumetric porosity estimated using a PTF based on silt/clay/OM/bulk density and topsoil indicator." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:yearFirstReservoirBuilt a owl:DatatypeProperty ;
+    rdfs:label "yearFirstReservoirBuilt" ;
+    dct:title "Year First Reservoir Built" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Year the first reservoir in the catchment was built." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:yearLastReservoirBuilt a owl:DatatypeProperty ;
+    rdfs:label "yearLastReservoirBuilt" ;
+    dct:title "Year Last Reservoir Built" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Year the last reservoir in the catchment was built." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:AirTemperature2mAvg a owl:Class ;
     rdfs:label "AirTemperature2mAvg" ;
+    dct:title "Air Temperature 2 M Avg" ;
     rdfs:subClassOf hyobs:AirTemperature2m ;
-    skos:definition "Air temperature at a height of 2 m above Earth surface (Average)" ;
+    skos:definition "Average air temperature at 2 metres above the land surface for the observation period." ;
     skos:exactMatch hyobs:AirTemperature2mAvg ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:AirTemperature2mMax a owl:Class ;
     rdfs:label "AirTemperature2mMax" ;
+    dct:title "Air Temperature 2 M Max" ;
     rdfs:subClassOf hyobs:AirTemperature2m ;
-    skos:definition "Air temperature at a height of 2 m above Earth surface (Maximum)" ;
+    skos:definition "Maximum air temperature at 2 metres above the land surface for the observation period." ;
     skos:exactMatch hyobs:AirTemperature2mMax ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:AirTemperature2mMin a owl:Class ;
     rdfs:label "AirTemperature2mMin" ;
+    dct:title "Air Temperature 2 M Min" ;
     rdfs:subClassOf hyobs:AirTemperature2m ;
-    skos:definition "Air temperature at a height of 2 m above Earth surface (Minimum)" ;
+    skos:definition "Minimum air temperature at 2 metres above the land surface for the observation period." ;
     skos:exactMatch hyobs:AirTemperature2mMin ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:ConcentrationSampleCount a owl:Class ;
+    rdfs:label "ConcentrationSampleCount" ;
+    dct:title "Concentration Sample Count" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Number of concentration samples available for an analyte and aggregation period." ;
+    skos:exactMatch hyobs:ConcentrationSampleCount ;
+    skos:inScheme hyobs:schema .
+
+hyobs:DAY-PER-YR a owl:Class ;
+    rdfs:label "DAY-PER-YR" ;
+    rdfs:subClassOf hyobs:HydroCustomUnitEnum ;
+    skos:definition "Custom Hydro-KG unit term DAY-PER-YR." .
 
 hyobs:DewPointTemperature2mAvg a owl:Class ;
     rdfs:label "DewPointTemperature2mAvg" ;
+    dct:title "Dew Point Temperature 2 M Avg" ;
     rdfs:subClassOf hyobs:DewPointTemperature2m ;
-    skos:definition "Dew point temperature at a height of 2 m above Earth surface (Average)" ;
+    skos:definition "Average dew point temperature 2 m for an observation period." ;
     skos:exactMatch hyobs:DewPointTemperature2mAvg ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:DewPointTemperature2mMax a owl:Class ;
     rdfs:label "DewPointTemperature2mMax" ;
+    dct:title "Dew Point Temperature 2 M Max" ;
     rdfs:subClassOf hyobs:DewPointTemperature2m ;
-    skos:definition "Dew point temperature at a height of 2 m above Earth surface (Maximum)" ;
+    skos:definition "Maximum dew point temperature 2 m for an observation period." ;
     skos:exactMatch hyobs:DewPointTemperature2mMax ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:DewPointTemperature2mMin a owl:Class ;
     rdfs:label "DewPointTemperature2mMin" ;
+    dct:title "Dew Point Temperature 2 M Min" ;
     rdfs:subClassOf hyobs:DewPointTemperature2m ;
-    skos:definition "Dew point temperature at a height of 2 m above Earth surface (Minimum)" ;
+    skos:definition "Minimum dew point temperature 2 m for an observation period." ;
     skos:exactMatch hyobs:DewPointTemperature2mMin ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:DischargeMedian a owl:Class ;
+    rdfs:label "DischargeMedian" ;
+    dct:title "Discharge Median" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Median discharge over the aggregation period." ;
+    skos:exactMatch hyobs:DischargeMedian ;
+    skos:inScheme hyobs:schema .
+
+hyobs:DischargeSampleCount a owl:Class ;
+    rdfs:label "DischargeSampleCount" ;
+    dct:title "Discharge Sample Count" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Number of discharge samples available for an aggregation period." ;
+    skos:exactMatch hyobs:DischargeSampleCount ;
+    skos:inScheme hyobs:schema .
+
+hyobs:DownwardShortwaveRadiation a owl:Class ;
+    rdfs:label "DownwardShortwaveRadiation" ;
+    skos:definition "Solar radiation received at Earth's surface (300-4000 nm)." ;
+    skos:exactMatch hyobs:DownwardShortwaveRadiation ;
+    skos:inScheme hyobs:schema .
+
+hyobs:EvapotranspirationPenmanMonteith a owl:Class ;
+    rdfs:label "EvapotranspirationPenmanMonteith" ;
+    dct:title "Evapotranspiration Penman Monteith" ;
+    skos:definition "Potential evapotranspiration estimated using the Penman-Monteith method." ;
+    skos:exactMatch envthes:21299,
+        hyobs:EvapotranspirationPenmanMonteith ;
+    skos:inScheme hyobs:schema .
+
+hyobs:EvapotranspirationPenmanMonteithCorrected a owl:Class ;
+    rdfs:label "EvapotranspirationPenmanMonteithCorrected" ;
+    skos:definition "Corrected Penman-Monteith evapotranspiration with interception correction." ;
+    skos:exactMatch envthes:21299,
+        hyobs:EvapotranspirationPenmanMonteithCorrected ;
+    skos:inScheme hyobs:schema .
+
+hyobs:FlowNormalizedConcentrationSampleCount a owl:Class ;
+    rdfs:label "FlowNormalizedConcentrationSampleCount" ;
+    dct:title "Flow Normalized Concentration Sample Count" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Number of flow-normalized concentration samples available for an analyte and aggregation period." ;
+    skos:exactMatch hyobs:FlowNormalizedConcentrationSampleCount ;
+    skos:inScheme hyobs:schema .
 
 hyobs:ForecastAlbedo a owl:Class ;
     rdfs:label "ForecastAlbedo" ;
-    skos:definition "Class representing observations of forecast albedo, which is the fraction of solar (shortwave) radiation reflected by Earth's surface (direct and diffuse)" ;
+    dct:title "Forecast Albedo" ;
+    skos:definition "Hydrological observed property or controlled vocabulary concept: forecast albedo." ;
     skos:exactMatch hyobs:ForecastAlbedo ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:HighVegetationGreenLeafArea a owl:Class ;
     rdfs:label "HighVegetationGreenLeafArea" ;
-    skos:definition "One-half of the total green leaf area for high-vegetation type" ;
+    dct:title "High Vegetation Green Leaf Area" ;
+    skos:definition "Hydrological observed property or controlled vocabulary concept: high vegetation green leaf area." ;
     skos:exactMatch hyobs:HighVegetationGreenLeafArea ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:HydroCustomUnitEnum a owl:Class ;
+    rdfs:label "HydroCustomUnitEnum" ;
+    skos:definition "Custom units used by the Hydro-Knowledge Graph when no QUDT unit was used directly in the mappings." ;
+    skos:inScheme hyobs:schema ;
+    linkml:permissible_values hyobs:DAY-PER-YR .
+
+hyobs:HydrometeorologicalProperty a owl:Class ;
+    rdfs:label "HydrometeorologicalProperty" ;
+    skos:definition "Observed hydrometeorological property represented in time-series observations." ;
+    skos:exactMatch hyobs:HydrometeorologicalProperty ;
+    skos:inScheme hyobs:schema .
+
+hyobs:LongwaveRadiation a owl:Class ;
+    rdfs:label "LongwaveRadiation" ;
+    skos:closeMatch envthes:22164 ;
+    skos:definition "Thermal radiation emitted by Earth and atmosphere (>4 microm)." ;
+    skos:exactMatch hyobs:LongwaveRadiation ;
+    skos:inScheme hyobs:schema .
+
+hyobs:LongwaveRadiationFlux a owl:Class ;
+    rdfs:label "LongwaveRadiationFlux" ;
+    dct:title "Longwave Radiation Flux" ;
+    skos:definition "Incoming or surface longwave radiation flux." ;
+    skos:exactMatch hyobs:LongwaveRadiationFlux ;
+    skos:inScheme hyobs:schema .
 
 hyobs:LowVegetationGreenLeafArea a owl:Class ;
     rdfs:label "LowVegetationGreenLeafArea" ;
-    skos:definition "One-half of the total green leaf area for low-vegetation type" ;
+    dct:title "Low Vegetation Green Leaf Area" ;
+    skos:definition "Hydrological observed property or controlled vocabulary concept: low vegetation green leaf area." ;
     skos:exactMatch hyobs:LowVegetationGreenLeafArea ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:RelativeHumidity a owl:Class ;
+    rdfs:label "RelativeHumidity" ;
+    dct:title "Relative Humidity" ;
+    skos:definition "Relative humidity of near-surface air." ;
+    skos:exactMatch hyobs:RelativeHumidity ;
+    skos:inScheme hyobs:schema .
+
+hyobs:ShortwaveRadiationFlux a owl:Class ;
+    rdfs:label "ShortwaveRadiationFlux" ;
+    dct:title "Shortwave Radiation Flux" ;
+    skos:definition "Incoming or surface shortwave radiation flux." ;
+    skos:exactMatch hyobs:ShortwaveRadiationFlux ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteConcentrationFlowNormalizedMean a owl:Class ;
+    rdfs:label "SoluteConcentrationFlowNormalizedMean" ;
+    dct:title "Solute Concentration Flow Normalized Mean" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Flow-normalized mean concentration of a solute in water." ;
+    skos:exactMatch hyobs:SoluteConcentrationFlowNormalizedMean ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteConcentrationFlowNormalizedMedian a owl:Class ;
+    rdfs:label "SoluteConcentrationFlowNormalizedMedian" ;
+    dct:title "Solute Concentration Flow Normalized Median" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Flow-normalized median concentration of a solute in water." ;
+    skos:exactMatch hyobs:SoluteConcentrationFlowNormalizedMedian ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteConcentrationFlowWeightedMean a owl:Class ;
+    rdfs:label "SoluteConcentrationFlowWeightedMean" ;
+    dct:title "Solute Concentration Flow Weighted Mean" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Flow-weighted mean concentration of a solute in water." ;
+    skos:exactMatch hyobs:SoluteConcentrationFlowWeightedMean ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteLoadSum a owl:Class ;
+    rdfs:label "SoluteLoadSum" ;
+    dct:title "Solute Load Sum" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Total solute load over an aggregation period." ;
+    skos:exactMatch hyobs:SoluteLoadSum ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteMassFluxFlowNormalizedMean a owl:Class ;
+    rdfs:label "SoluteMassFluxFlowNormalizedMean" ;
+    dct:title "Solute Mass Flux Flow Normalized Mean" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Flow-normalized mean solute mass flux over an aggregation period." ;
+    skos:exactMatch hyobs:SoluteMassFluxFlowNormalizedMean ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SoluteMassFluxMean a owl:Class ;
+    rdfs:label "SoluteMassFluxMean" ;
+    dct:title "Solute Mass Flux Mean" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Mean solute mass flux over an aggregation period." ;
+    skos:exactMatch hyobs:SoluteMassFluxMean ;
+    skos:inScheme hyobs:schema .
+
+hyobs:SpecificDischarge a owl:Class ;
+    rdfs:label "SpecificDischarge" ;
+    dct:title "Specific Discharge" ;
+    rdfs:subClassOf hyobs:WaterQualityProperty ;
+    skos:definition "Discharge normalized by catchment area, commonly expressed as an equivalent water depth per unit time." ;
+    skos:exactMatch hyobs:SpecificDischarge ;
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetSolarRadiationAvg a owl:Class ;
     rdfs:label "SurfaceNetSolarRadiationAvg" ;
+    dct:title "Surface Net Solar Radiation Avg" ;
     rdfs:subClassOf hyobs:SurfaceNetSolarRadiation ;
-    skos:definition "Surface Net Solar Radiation (Average)" ;
+    skos:definition "Average surface net solar radiation for an observation period." ;
     skos:exactMatch hyobs:SurfaceNetSolarRadiationAvg ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetSolarRadiationMax a owl:Class ;
     rdfs:label "SurfaceNetSolarRadiationMax" ;
+    dct:title "Surface Net Solar Radiation Max" ;
     rdfs:subClassOf hyobs:SurfaceNetSolarRadiation ;
-    skos:definition "Surface Net Solar Radiation (Maximum)" ;
+    skos:definition "Maximum surface net solar radiation for an observation period." ;
     skos:exactMatch hyobs:SurfaceNetSolarRadiationMax ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetSolarRadiationMin a owl:Class ;
     rdfs:label "SurfaceNetSolarRadiationMin" ;
     rdfs:subClassOf hyobs:SurfaceNetSolarRadiation ;
     skos:definition "Surface Net Solar Radiation (Minimum)" ;
     skos:exactMatch hyobs:SurfaceNetSolarRadiationMin ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetThermalRadiationAvg a owl:Class ;
     rdfs:label "SurfaceNetThermalRadiationAvg" ;
+    dct:title "Surface Net Thermal Radiation Avg" ;
     rdfs:subClassOf hyobs:SurfaceNetThermalRadiation ;
-    skos:definition "Surface Net Thermal Radiation (Average)" ;
+    skos:definition "Average surface net thermal radiation for an observation period." ;
     skos:exactMatch hyobs:SurfaceNetThermalRadiationAvg ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetThermalRadiationMax a owl:Class ;
     rdfs:label "SurfaceNetThermalRadiationMax" ;
+    dct:title "Surface Net Thermal Radiation Max" ;
     rdfs:subClassOf hyobs:SurfaceNetThermalRadiation ;
-    skos:definition "Surface Net Thermal Radiation (Maximum)" ;
+    skos:definition "Maximum surface net thermal radiation for an observation period." ;
     skos:exactMatch hyobs:SurfaceNetThermalRadiationMax ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetThermalRadiationMin a owl:Class ;
     rdfs:label "SurfaceNetThermalRadiationMin" ;
     rdfs:subClassOf hyobs:SurfaceNetThermalRadiation ;
     skos:definition "Surface Net Thermal Radiation (Minimum)" ;
     skos:exactMatch hyobs:SurfaceNetThermalRadiationMin ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:WRTDS a owl:Class ;
+    rdfs:label "WRTDS" ;
+    dct:title "Wrtds" ;
+    rdfs:subClassOf hyobs:Procedure ;
+    skos:definition "Weighted Regression on Time, Discharge, and Season procedure used for estimating or normalizing water-quality quantities." ;
+    skos:exactMatch hyobs:WRTDS ;
+    skos:inScheme hyobs:schema .
 
 hyobs:WaterFractionSubsoil a owl:Class ;
     rdfs:label "WaterFractionSubsoil" ;
-    skos:definition "Class representing observations of the fraction of water in the subsoil layer at a depth of 100 to 289 cm." ;
+    dct:title "Water Fraction Subsoil" ;
+    skos:definition "Hydrological observed property or controlled vocabulary concept: water fraction subsoil." ;
     skos:exactMatch hyobs:WaterFractionSubsoil ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:WaterFractionTopsoil a owl:Class ;
     rdfs:label "WaterFractionTopsoil" ;
-    skos:definition "Class representing observations of the fraction of water in the topsoil layer at a depth of 0 to 100 cm." ;
+    dct:title "Water Fraction Topsoil" ;
+    skos:definition "Hydrological observed property or controlled vocabulary concept: water fraction topsoil." ;
     skos:exactMatch hyobs:WaterFractionTopsoil ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:WindSpeedEast10m a owl:Class ;
     rdfs:label "WindSpeedEast10m" ;
-    skos:definition "Horizontal speed of air moving towards the east at a height of 10 m above Earth surface" ;
+    dct:title "Wind Speed East 10 M" ;
+    skos:definition "Eastward component of wind speed at 10 metres above the land surface." ;
     skos:exactMatch hyobs:WindSpeedEast10m ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:WindSpeedNorth10m a owl:Class ;
     rdfs:label "WindSpeedNorth10m" ;
-    skos:definition "Vertical speed of air moving towards the north at a height of 10 m above Earth surface" ;
+    dct:title "Wind Speed North 10 M" ;
+    skos:definition "Northward component of wind speed at 10 metres above the land surface." ;
     skos:exactMatch hyobs:WindSpeedNorth10m ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
-hyobs:GovnrID a owl:Class ;
-    rdfs:label "GovnrID" ;
-    skos:definition "Government ID" ;
-    skos:exactMatch hyobs:GovnrID ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+hyobs:Analyte a owl:Class ;
+    rdfs:label "Analyte" ;
+    skos:definition "Chemical or aggregate analyte used in water-quality observations." ;
+    skos:exactMatch hyobs:Analyte ;
+    skos:inScheme hyobs:schema .
 
-<hyobs:Envthes:10092> a owl:Class ;
-    rdfs:label "envthes:10092" ;
+hyobs:Catchment a owl:Class ;
+    rdfs:label "Catchment" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasRunoffRatio ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:flashinessIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasLowPrecipitationSeason ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:minElevation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:flashinessIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:minElevation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:slopeMedian ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasRunoffRatio ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:maxElevation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasHighPrecipitationSeason ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:maxElevation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasDominantLandUse ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:aridityIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasAridityIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:maxElevation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasCatchmentArea ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:drainageDensity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:medianElevation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasRunoffRatio ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:drainageDensity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:flashinessIndex ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty hyobs:has_mvert_ang ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:baseflowIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasAridityIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:slopeMean ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:drainageDensity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasSnowFraction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:slopeMean ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty hyobs:hasLowPrecipitationSeason ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasSnowFraction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasMeanEvapotranspiration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty hyobs:hasHighPrecipitationSeason ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty hyobs:hasRiverBasedRegion ],
+            owl:onProperty hyobs:hasMeanDailyPrecip ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasSnowFraction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty hyobs:hasLowPrecipitationSeason ],
+            owl:onProperty hyobs:aridityIndex ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty hyobs:hasHighPrecipitationSeason ],
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:meanElevation ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty hyobs:hasDominantLandUse ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:meanSlope ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasMeanDailyPrecip ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:baseflowIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasDominantLandUse ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:slopeMedian ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:slopeMedian ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:precipSeasonalityIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:slopeMean ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:medianElevation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:hasCatchmentArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:precipitationSeasonality ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasCatchmentArea ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty hyobs:hasLowPrecipitationSeason ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty hyobs:has_mvert_dist ],
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:hasMeanEvapotranspiration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:meanElevation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:precipitationSeasonality ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty hyobs:hasHighPrecipitationSeason ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty hyobs:has_mvert_dist ],
+            owl:onProperty hyobs:hasRiverBasedRegion ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty hyobs:hasRiverBasedRegion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:precipSeasonalityIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:minElevation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasAridityIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:aridityIndex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:has_mvert_ang ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:baseflowIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty hyobs:hasHighPrecipitationSeason ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:medianElevation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty hyobs:precipSeasonalityIndex ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:decimal ;
             owl:onProperty hyobs:has_mvert_ang ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty hyobs:precipitationSeasonality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty hyobs:hasRiverBasedRegion ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty hyobs:has_mvert_dist ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty hyobs:hasDominantLandUse ],
+            owl:onProperty hyobs:meanSlope ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty hyobs:has_mvert_ang ],
+            owl:onProperty hyobs:hasMeanDailyPrecip ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty hyobs:hasDominantLandUse ],
+            owl:onProperty hyobs:meanSlope ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty hyobs:hasRiverBasedRegion ] ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+            owl:onProperty hyobs:has_mvert_dist ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:has_mvert_dist ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hyobs:hasMeanEvapotranspiration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hyobs:meanElevation ] ;
+    skos:definition "A hydrological catchment or drainage basin represented as a feature of interest for sensors and observations." ;
+    skos:exactMatch envthes:30212 ;
+    skos:inScheme hyobs:schema .
+
+hyobs:GovnrID a owl:Class ;
+    rdfs:label "GovnrID" ;
+    skos:definition "Government ID" ;
+    skos:exactMatch hyobs:GovnrID ;
+    skos:inScheme hyobs:schema .
+
+hyobs:Procedure a owl:Class ;
+    rdfs:label "Procedure" ;
+    skos:definition "Procedure or method used to create or normalize observations." ;
+    skos:exactMatch hyobs:Procedure ;
+    skos:inScheme hyobs:schema .
+
+hyobs:aridityIndex a owl:DatatypeProperty ;
+    rdfs:label "aridityIndex" ;
+    dct:title "Aridity Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Aridity index of a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:baseflowIndex a owl:DatatypeProperty ;
+    rdfs:label "baseflowIndex" ;
+    dct:title "Baseflow Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Baseflow index describing the fraction of streamflow sustained by baseflow." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:drainageDensity a owl:DatatypeProperty ;
+    rdfs:label "drainageDensity" ;
+    dct:title "Drainage Density" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Drainage density of a catchment, usually calculated as stream length per unit catchment area." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:flashinessIndex a owl:DatatypeProperty ;
+    rdfs:label "flashinessIndex" ;
+    dct:title "Flashiness Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Hydrological flashiness index describing short-term variability of streamflow." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasAridityIndex a owl:DatatypeProperty ;
+    rdfs:label "hasAridityIndex" ;
+    dct:title "Aridity Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Aridity index of a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasCatchmentArea a owl:DatatypeProperty ;
+    rdfs:label "hasCatchmentArea" ;
+    dct:title "Has Catchment Area" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Area of a catchment, represented either as a decimal value or as a QUDT quantity value with an explicit area unit." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasDominantLandUse a owl:DatatypeProperty ;
     rdfs:label "hasDominantLandUse" ;
-    dcterms:title "Dominant land use type" ;
+    dct:title "Dominant land use type" ;
     rdfs:range xsd:string ;
-    skos:definition "Dominant land use type" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has dominant land use." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasHighPrecipitationSeason a owl:DatatypeProperty ;
     rdfs:label "hasHighPrecipitationSeason" ;
-    dcterms:title "has High precipitation season" ;
+    dct:title "has High precipitation season" ;
     rdfs:range xsd:string ;
-    skos:definition "has High precipitation season" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has high precipitation season." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:hasLowPrecipitationSeason a owl:DatatypeProperty ;
     rdfs:label "hasLowPrecipitationSeason" ;
-    dcterms:title "has Low precipitation season" ;
+    dct:title "has Low precipitation season" ;
     rdfs:range xsd:string ;
-    skos:definition "has Low precipitation season" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has low precipitation season." ;
+    skos:inScheme hyobs:schema .
 
-hyobs:hasRiverBasedRegion a owl:DatatypeProperty ;
-    rdfs:label "hasRiverBasedRegion" ;
-    dcterms:title "River-based region" ;
-    rdfs:range xsd:string ;
-    skos:definition "Name of the river-based region" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+hyobs:hasMeanDailyPrecip a owl:DatatypeProperty ;
+    rdfs:label "hasMeanDailyPrecip" ;
+    dct:title "Mean Daily Precipitation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Long-term mean daily precipitation for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasMeanEvapotranspiration a owl:DatatypeProperty ;
+    rdfs:label "hasMeanEvapotranspiration" ;
+    dct:title "Mean Daily Evapotranspiration" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Long-term mean daily evapotranspiration for a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasRunoffRatio a owl:DatatypeProperty ;
+    rdfs:label "hasRunoffRatio" ;
+    dct:title "Has Runoff Ratio" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Ratio of runoff to precipitation for a catchment." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:hasSnowFraction a owl:DatatypeProperty ;
+    rdfs:label "hasSnowFraction" ;
+    dct:title "Snow Fraction" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Fraction of precipitation that falls as snow." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:has_mvert_ang a owl:DatatypeProperty ;
     rdfs:label "has_mvert_ang" ;
-    dcterms:title "Has mvert ang" ;
+    dct:title "Has mvert ang" ;
     rdfs:range xsd:decimal ;
-    skos:definition "Angle to farthest point of the catchment" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has mvert ang." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:has_mvert_dist a owl:DatatypeProperty ;
     rdfs:label "has_mvert_dist" ;
-    dcterms:title "Longest distance from the gauge" ;
+    dct:title "Longest distance from the gauge" ;
     rdfs:range xsd:string ;
-    skos:definition "Longest distance from the gauge" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:definition "Hydrological or environmental attribute: has mvert dist." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:maxElevation a owl:DatatypeProperty ;
+    rdfs:label "maxElevation" ;
+    dct:title "Maximum Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Maximum elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanElevation a owl:DatatypeProperty ;
+    rdfs:label "meanElevation" ;
+    dct:title "Mean Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Mean elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:meanSlope a owl:DatatypeProperty ;
+    rdfs:label "meanSlope" ;
+    dct:title "Mean Slope" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Mean terrain slope of a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:medianElevation a owl:DatatypeProperty ;
+    rdfs:label "medianElevation" ;
+    dct:title "Median Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Median elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:minElevation a owl:DatatypeProperty ;
+    rdfs:label "minElevation" ;
+    dct:title "Minimum Elevation" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:monitorsCatchment a owl:ObjectProperty ;
     rdfs:label "monitorsCatchment" ;
-    dcterms:title "monitors Catchment" ;
-    rdfs:range <hyobs:Envthes:10092> ;
-    skos:definition "Relates a sensor or gauge to a catchment area it monitors" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    dct:title "monitors Catchment" ;
+    rdfs:range hyobs:Catchment ;
+    skos:definition "Relates a hydrological monitoring sensor or gauging station to the catchment it monitors." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipSeasonalityIndex a owl:DatatypeProperty ;
+    rdfs:label "precipSeasonalityIndex" ;
+    dct:title "Precip Seasonality Index" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Seasonality index describing the timing and distribution of precipitation through the year." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:precipitationSeasonality a owl:DatatypeProperty ;
+    rdfs:label "precipitationSeasonality" ;
+    dct:title "Precipitation Seasonality" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Seasonality index describing the timing and distribution of precipitation through the year." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:producesTimeseries a owl:DatatypeProperty ;
     rdfs:label "producesTimeseries" ;
-    dcterms:title "has Time Series" ;
+    dct:title "has Time Series" ;
     rdfs:range xsd:string ;
     skos:definition "has Time Series" ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
+
+hyobs:slopeMean a owl:DatatypeProperty ;
+    rdfs:label "slopeMean" ;
+    dct:title "Slope Mean" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Mean terrain slope of a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
+
+hyobs:slopeMedian a owl:DatatypeProperty ;
+    rdfs:label "slopeMedian" ;
+    dct:title "Slope Median" ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Median terrain slope of a catchment or spatial unit." ;
+    skos:inScheme hyobs:schema .
 
 hyobs:AirTemperature2m a owl:Class ;
     rdfs:label "AirTemperature2m" ;
     skos:definition "Air temperature at a height of 2 m above Earth surface" ;
     skos:exactMatch hyobs:AirTemperature2m ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:DewPointTemperature2m a owl:Class ;
     rdfs:label "DewPointTemperature2m" ;
     skos:definition "Dew point temperature at a height of 2 m above Earth surface" ;
     skos:exactMatch hyobs:DewPointTemperature2m ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetSolarRadiation a owl:Class ;
     rdfs:label "SurfaceNetSolarRadiation" ;
     skos:definition "Class representing observations of surface net solar radiation, i.e., the amount of solar radiation reaching the Earth's surface minus the amount reflected by the Earth's surface (governed by albedo); positive sign is an indicator for radiation to the Earth" ;
     skos:exactMatch hyobs:SurfaceNetSolarRadiation ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
 hyobs:SurfaceNetThermalRadiation a owl:Class ;
     rdfs:label "SurfaceNetThermalRadiation" ;
     skos:definition "Class representing observations of surface thermal radiation, i.e., net thermal radiation at the Earth's surface; positive sign is an indicator for radiation from the Earth." ;
     skos:exactMatch hyobs:SurfaceNetThermalRadiation ;
-    skos:inScheme <https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd> .
+    skos:inScheme hyobs:schema .
 
+hyobs:hasRiverBasedRegion a owl:DatatypeProperty ;
+    rdfs:label "hasRiverBasedRegion" ;
+    dct:title "River-based region" ;
+    rdfs:range xsd:string ;
+    skos:definition "Name or identifier of the river-based region associated with a gauging station or catchment." ;
+    skos:inScheme hyobs:schema .
 
+hyobs:WaterQualityProperty a owl:Class ;
+    rdfs:label "WaterQualityProperty" ;
+    skos:definition "Observed water-quality property represented in QUADICA observations." ;
+    skos:exactMatch hyobs:WaterQualityProperty ;
+    skos:inScheme hyobs:schema .

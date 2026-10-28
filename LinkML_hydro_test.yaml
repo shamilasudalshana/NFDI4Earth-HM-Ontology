@@ -1,13 +1,26 @@
-id: https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd
-name: NFDI4EarthHydroOntology
-description: Ontology for hydrological obersvation variables and time series data, converted to
-  LinkML.
+id: https://w3id.org/hmontology/schema
+name: NFDI4Earth-HYOBS-Ontology
+description: LinkML schema for the NFDI4Earth-HYOBS-Ontology used to annotate hydrological sensors, catchments, geometries,
+  observations, environmental properties, hydrometeorological variables, and water-quality variables across LamaH-CE, CAMELS-GB,
+  and QUADICA.
 prefixes:
-  hyobs : https://nfdi4earth.pages.rwth-aachen.de/knowledgehub/nfdi4earth-ontology/test_hyd#
+  hyobs: https://w3id.org/hmontology/
   linkml: https://w3id.org/linkml/
   envthes: http://vocabs.lter-europe.net/EnvThes/
   sosa: http://www.w3.org/ns/sosa/
-default_prefix: hyobs 
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  geo: http://www.opengis.net/ont/geosparql#
+  sf: http://www.opengis.net/ont/sf#
+  qudt: http://qudt.org/schema/qudt/
+  unit: http://qudt.org/vocab/unit/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  schema: http://schema.org/
+  dct: http://purl.org/dc/terms/
+  dbo: http://dbpedia.org/ontology/
+  esco: http://data.europa.eu/esco/model#
+  chebi: http://purl.obolibrary.org/obo/CHEBI_
+default_prefix: hyobs
 imports:
 - linkml:types
 classes:
@@ -15,102 +28,252 @@ classes:
     description: Air temperature at a height of 2 m above Earth surface
     class_uri: hyobs:AirTemperature2m
   AirTemperature2mMax:
-    description: Air temperature at a height of 2 m above Earth surface (Maximum)
+    description: Maximum air temperature at 2 metres above the land surface for the observation period.
     class_uri: hyobs:AirTemperature2mMax
     is_a: AirTemperature2m
+    title: Air Temperature 2 M Max
   AirTemperature2mMin:
-    description: Air temperature at a height of 2 m above Earth surface (Minimum)
+    description: Minimum air temperature at 2 metres above the land surface for the observation period.
     class_uri: hyobs:AirTemperature2mMin
     is_a: AirTemperature2m
+    title: Air Temperature 2 M Min
   AirTemperature2mAvg:
-    description: Air temperature at a height of 2 m above Earth surface (Average)
+    description: Average air temperature at 2 metres above the land surface for the observation period.
     class_uri: hyobs:AirTemperature2mAvg
     is_a: AirTemperature2m
+    title: Air Temperature 2 M Avg
   DewPointTemperature2m:
     description: Dew point temperature at a height of 2 m above Earth surface
     class_uri: hyobs:DewPointTemperature2m
   DewPointTemperature2mMax:
-    description: Dew point temperature at a height of 2 m above Earth surface (Maximum)
+    description: Maximum dew point temperature 2 m for an observation period.
     class_uri: hyobs:DewPointTemperature2mMax
     is_a: DewPointTemperature2m
+    title: Dew Point Temperature 2 M Max
   DewPointTemperature2mAvg:
-    description: Dew point temperature at a height of 2 m above Earth surface (Average)
+    description: Average dew point temperature 2 m for an observation period.
     class_uri: hyobs:DewPointTemperature2mAvg
     is_a: DewPointTemperature2m
+    title: Dew Point Temperature 2 M Avg
   DewPointTemperature2mMin:
-    description: Dew point temperature at a height of 2 m above Earth surface (Minimum)
+    description: Minimum dew point temperature 2 m for an observation period.
     class_uri: hyobs:DewPointTemperature2mMin
     is_a: DewPointTemperature2m
+    title: Dew Point Temperature 2 M Min
   WindSpeedEast10m:
-    description: Horizontal speed of air moving towards the east at a height of 10
-      m above Earth surface
+    description: Eastward component of wind speed at 10 metres above the land surface.
     class_uri: hyobs:WindSpeedEast10m
+    title: Wind Speed East 10 M
   WindSpeedNorth10m:
-    description: Vertical speed of air moving towards the north at a height of 10
-      m above Earth surface
+    description: Northward component of wind speed at 10 metres above the land surface.
     class_uri: hyobs:WindSpeedNorth10m
+    title: Wind Speed North 10 M
   ForecastAlbedo:
-    description: Class representing observations of forecast albedo, which is the fraction of solar (shortwave) radiation reflected by Earth's surface (direct and diffuse)
+    description: 'Hydrological observed property or controlled vocabulary concept: forecast albedo.'
     class_uri: hyobs:ForecastAlbedo
+    title: Forecast Albedo
   HighVegetationGreenLeafArea:
-    description: One-half of the total green leaf area for high-vegetation type
+    description: 'Hydrological observed property or controlled vocabulary concept: high vegetation green leaf area.'
     class_uri: hyobs:HighVegetationGreenLeafArea
+    title: High Vegetation Green Leaf Area
   LowVegetationGreenLeafArea:
-    description: One-half of the total green leaf area for low-vegetation type
+    description: 'Hydrological observed property or controlled vocabulary concept: low vegetation green leaf area.'
     class_uri: hyobs:LowVegetationGreenLeafArea
+    title: Low Vegetation Green Leaf Area
   SurfaceNetSolarRadiation:
-    description: Class representing observations of surface net solar radiation, i.e., the amount of solar radiation reaching the Earth's surface minus the amount reflected by the Earth's surface (governed by albedo); positive sign is an indicator for radiation to the Earth
+    description: Class representing observations of surface net solar radiation, i.e., the amount of solar radiation reaching
+      the Earth's surface minus the amount reflected by the Earth's surface (governed by albedo); positive sign is an indicator
+      for radiation to the Earth
     class_uri: hyobs:SurfaceNetSolarRadiation
   SurfaceNetSolarRadiationMax:
-    description: Surface Net Solar Radiation (Maximum)
+    description: Maximum surface net solar radiation for an observation period.
     class_uri: hyobs:SurfaceNetSolarRadiationMax
     is_a: SurfaceNetSolarRadiation
+    title: Surface Net Solar Radiation Max
   SurfaceNetSolarRadiationAvg:
-    description: Surface Net Solar Radiation (Average)
+    description: Average surface net solar radiation for an observation period.
     class_uri: hyobs:SurfaceNetSolarRadiationAvg
     is_a: SurfaceNetSolarRadiation
+    title: Surface Net Solar Radiation Avg
   SurfaceNetSolarRadiationMin:
     description: Surface Net Solar Radiation (Minimum)
     class_uri: hyobs:SurfaceNetSolarRadiationMin
     is_a: SurfaceNetSolarRadiation
   SurfaceNetThermalRadiation:
-    description: Class representing observations of surface thermal radiation, i.e., net thermal radiation at the Earth's surface; positive sign is an indicator for radiation from the Earth.
+    description: Class representing observations of surface thermal radiation, i.e., net thermal radiation at the Earth's
+      surface; positive sign is an indicator for radiation from the Earth.
     class_uri: hyobs:SurfaceNetThermalRadiation
   SurfaceNetThermalRadiationMax:
-    description: Surface Net Thermal Radiation (Maximum)
+    description: Maximum surface net thermal radiation for an observation period.
     class_uri: hyobs:SurfaceNetThermalRadiationMax
     is_a: SurfaceNetThermalRadiation
+    title: Surface Net Thermal Radiation Max
   SurfaceNetThermalRadiationAvg:
-    description: Surface Net Thermal Radiation (Average)
+    description: Average surface net thermal radiation for an observation period.
     class_uri: hyobs:SurfaceNetThermalRadiationAvg
     is_a: SurfaceNetThermalRadiation
+    title: Surface Net Thermal Radiation Avg
   SurfaceNetThermalRadiationMin:
     description: Surface Net Thermal Radiation (Minimum)
     class_uri: hyobs:SurfaceNetThermalRadiationMin
     is_a: SurfaceNetThermalRadiation
   WaterFractionTopsoil:
-    description: Class representing observations of the fraction of water in the topsoil layer at a depth of 0 to 100 cm.
+    description: 'Hydrological observed property or controlled vocabulary concept: water fraction topsoil.'
     class_uri: hyobs:WaterFractionTopsoil
+    title: Water Fraction Topsoil
   WaterFractionSubsoil:
-    description: Class representing observations of the fraction of water in the subsoil layer at a depth of 100 to 289 cm.
+    description: 'Hydrological observed property or controlled vocabulary concept: water fraction subsoil.'
     class_uri: hyobs:WaterFractionSubsoil
+    title: Water Fraction Subsoil
   GovnrID:
     description: Government ID
     class_uri: hyobs:GovnrID
-  envthes:10092: # catchment 
+  Catchment:
     slots:
-      - hasRiverBasedRegion
-      - has_mvert_dist
-      - has_mvert_ang
-      - hasHighPrecipitationSeason
-      - hasLowPrecipitationSeason
-      - hasDominantLandUse
-  sosa:Sensor: 
+    - hasRiverBasedRegion
+    - has_mvert_dist
+    - has_mvert_ang
+    - hasHighPrecipitationSeason
+    - hasLowPrecipitationSeason
+    - hasDominantLandUse
+    - hasCatchmentArea
+    - meanElevation
+    - medianElevation
+    - minElevation
+    - maxElevation
+    - meanSlope
+    - slopeMean
+    - slopeMedian
+    - drainageDensity
+    - hasMeanDailyPrecip
+    - hasMeanEvapotranspiration
+    - hasAridityIndex
+    - aridityIndex
+    - precipitationSeasonality
+    - precipSeasonalityIndex
+    - hasSnowFraction
+    - hasRunoffRatio
+    - baseflowIndex
+    - flashinessIndex
+    class_uri: envthes:30212
+    description: A hydrological catchment or drainage basin represented as a feature of interest for sensors and observations.
+  Sensor:
     slots:
-      - producesTimeseries
-      - monitorsCatchment
-
-
+    - producesTimeseries
+    - monitorsCatchment
+    class_uri: sosa:Sensor
+    description: A gauging station or sensor that monitors a hydrological catchment and may make observations.
+  River:
+    slots:
+    - hasRiverBasedRegion
+    class_uri: envthes:20916
+  EvapotranspirationPenmanMonteith:
+    class_uri: hyobs:EvapotranspirationPenmanMonteith
+    description: Potential evapotranspiration estimated using the Penman-Monteith method.
+    exact_mappings:
+    - envthes:21299
+    title: Evapotranspiration Penman Monteith
+  EvapotranspirationPenmanMonteithCorrected:
+    class_uri: hyobs:EvapotranspirationPenmanMonteithCorrected
+    description: Corrected Penman-Monteith evapotranspiration with interception correction.
+    exact_mappings:
+    - envthes:21299
+  DownwardShortwaveRadiation:
+    class_uri: hyobs:DownwardShortwaveRadiation
+    description: Solar radiation received at Earth's surface (300-4000 nm).
+  LongwaveRadiation:
+    class_uri: hyobs:LongwaveRadiation
+    description: Thermal radiation emitted by Earth and atmosphere (>4 microm).
+    close_mappings:
+    - envthes:22164
+  Geometry:
+    description: Spatial geometry associated with a sensor or catchment.
+    class_uri: geo:Geometry
+  SpecificDischarge:
+    class_uri: hyobs:SpecificDischarge
+    description: Discharge normalized by catchment area, commonly expressed as an equivalent water depth per unit time.
+    title: Specific Discharge
+    is_a: WaterQualityProperty
+  RelativeHumidity:
+    class_uri: hyobs:RelativeHumidity
+    description: Relative humidity of near-surface air.
+    title: Relative Humidity
+  ShortwaveRadiationFlux:
+    class_uri: hyobs:ShortwaveRadiationFlux
+    description: Incoming or surface shortwave radiation flux.
+    title: Shortwave Radiation Flux
+  LongwaveRadiationFlux:
+    class_uri: hyobs:LongwaveRadiationFlux
+    description: Incoming or surface longwave radiation flux.
+    title: Longwave Radiation Flux
+  DischargeSampleCount:
+    class_uri: hyobs:DischargeSampleCount
+    description: Number of discharge samples available for an aggregation period.
+    title: Discharge Sample Count
+    is_a: WaterQualityProperty
+  ConcentrationSampleCount:
+    class_uri: hyobs:ConcentrationSampleCount
+    description: Number of concentration samples available for an analyte and aggregation period.
+    title: Concentration Sample Count
+    is_a: WaterQualityProperty
+  WRTDS:
+    class_uri: hyobs:WRTDS
+    description: Weighted Regression on Time, Discharge, and Season procedure used for estimating or normalizing water-quality
+      quantities.
+    title: Wrtds
+    is_a: Procedure
+  FlowNormalizedConcentrationSampleCount:
+    class_uri: hyobs:FlowNormalizedConcentrationSampleCount
+    description: Number of flow-normalized concentration samples available for an analyte and aggregation period.
+    title: Flow Normalized Concentration Sample Count
+    is_a: WaterQualityProperty
+  DischargeMedian:
+    class_uri: hyobs:DischargeMedian
+    description: Median discharge over the aggregation period.
+    title: Discharge Median
+    is_a: WaterQualityProperty
+  SoluteConcentrationFlowWeightedMean:
+    class_uri: hyobs:SoluteConcentrationFlowWeightedMean
+    description: Flow-weighted mean concentration of a solute in water.
+    title: Solute Concentration Flow Weighted Mean
+    is_a: WaterQualityProperty
+  SoluteLoadSum:
+    class_uri: hyobs:SoluteLoadSum
+    description: Total solute load over an aggregation period.
+    title: Solute Load Sum
+    is_a: WaterQualityProperty
+  SoluteMassFluxMean:
+    class_uri: hyobs:SoluteMassFluxMean
+    description: Mean solute mass flux over an aggregation period.
+    title: Solute Mass Flux Mean
+    is_a: WaterQualityProperty
+  SoluteConcentrationFlowNormalizedMedian:
+    class_uri: hyobs:SoluteConcentrationFlowNormalizedMedian
+    description: Flow-normalized median concentration of a solute in water.
+    title: Solute Concentration Flow Normalized Median
+    is_a: WaterQualityProperty
+  SoluteConcentrationFlowNormalizedMean:
+    class_uri: hyobs:SoluteConcentrationFlowNormalizedMean
+    description: Flow-normalized mean concentration of a solute in water.
+    title: Solute Concentration Flow Normalized Mean
+    is_a: WaterQualityProperty
+  SoluteMassFluxFlowNormalizedMean:
+    class_uri: hyobs:SoluteMassFluxFlowNormalizedMean
+    description: Flow-normalized mean solute mass flux over an aggregation period.
+    title: Solute Mass Flux Flow Normalized Mean
+    is_a: WaterQualityProperty
+  HydrometeorologicalProperty:
+    description: Observed hydrometeorological property represented in time-series observations.
+    class_uri: hyobs:HydrometeorologicalProperty
+  WaterQualityProperty:
+    description: Observed water-quality property represented in QUADICA observations.
+    class_uri: hyobs:WaterQualityProperty
+  Analyte:
+    description: Chemical or aggregate analyte used in water-quality observations.
+    class_uri: hyobs:Analyte
+  Procedure:
+    description: Procedure or method used to create or normalize observations.
+    class_uri: hyobs:Procedure
 slots:
   issueID:
     slot_uri: hyobs:issueID
@@ -121,51 +284,51 @@ slots:
     title: River-based region
     slot_uri: hyobs:hasRiverBasedRegion
     range: string
-    description: Name of the river-based region
+    description: Name or identifier of the river-based region associated with a gauging station or catchment.
   has_mvert_dist:
     slot_uri: hyobs:has_mvert_dist
     range: string
-    description: Longest distance from the gauge
+    description: 'Hydrological or environmental attribute: has mvert dist.'
     title: Longest distance from the gauge
   has_mvert_ang:
     slot_uri: hyobs:has_mvert_ang
     range: decimal
-    description: Angle to farthest point of the catchment
+    description: 'Hydrological or environmental attribute: has mvert ang.'
     title: Has mvert ang
   monitorsCatchment:
     slot_uri: hyobs:monitorsCatchment
-    range: envthes:10092
-    description: Relates a sensor or gauge to a catchment area it monitors
+    range: Catchment
+    description: Relates a hydrological monitoring sensor or gauging station to the catchment it monitors.
     title: monitors Catchment
   hasHighPrecipitationSeason:
     slot_uri: hyobs:hasHighPrecipitationSeason
     range: string
-    description: has High precipitation season
+    description: 'Hydrological or environmental attribute: has high precipitation season.'
     title: has High precipitation season
   hasLowPrecipitationSeason:
     slot_uri: hyobs:hasLowPrecipitationSeason
     range: string
-    description: has Low precipitation season
+    description: 'Hydrological or environmental attribute: has low precipitation season.'
     title: has Low precipitation season
   hasDominantLandUse:
     slot_uri: hyobs:hasDominantLandUse
     range: string
-    description: Dominant land use type
+    description: 'Hydrological or environmental attribute: has dominant land use.'
     title: Dominant land use type
   hasSoil:
     slot_uri: hyobs:hasSoil
     range: string
-    description: Connects an area or point to its soil
+    description: Connects an area or a point to the soil
     title: Has soil
   hasSoilPorosity:
     slot_uri: hyobs:hasSoilPorosity
     range: string
-    description: Soil porosity
+    description: 'Hydrological or environmental attribute: has soil porosity.'
     title: Soil porosity
   hasSaturatedHydraulicConductivity:
     slot_uri: hyobs:hasSaturatedHydraulicConductivity
     range: decimal
-    description: has Saturated Hydraulic Conductivity
+    description: 'Hydrological or environmental attribute: has saturated hydraulic conductivity.'
     title: has Saturated Hydraulic Conductivity
   hasSoilTexture:
     slot_uri: hyobs:hasSoilTexture
@@ -175,10 +338,1490 @@ slots:
   hasDominantGeologicalClass:
     slot_uri: hyobs:hasDominantGeologicalClass
     range: string
-    description: Has Dominant Geological Class
+    description: 'Hydrological or environmental attribute: has dominant geological class.'
     title: Has Dominant Geological Class
   producesTimeseries:
     slot_uri: hyobs:producesTimeseries
     range: string
     description: has Time Series
     title: has Time Series
+  elevationGuage:
+    slot_uri: hyobs:elevationGuage
+    title: Elevation of gauge
+    description: Elevation of the gauge's zero point from mean sea level
+    range: decimal
+  obsBegDaily:
+    slot_uri: hyobs:obsBegDaily
+    title: Starting Year of Daily Runoff Time Series
+    description: Year when the daily runoff time series in the dataset begins
+    range: integer
+  obsBegHr:
+    slot_uri: hyobs:obsBegHr
+    title: Starting Year of hourly Runoff Time Series
+    description: Year when the hourly runoff time series in the dataset begins
+    range: integer
+  obsEndHr:
+    slot_uri: hyobs:obsEndHr
+    title: Observation End Year
+    description: Year when the continuous runoff data recording ended, use '0' if ongoing
+    range: integer
+  hasObsBegTime:
+    slot_uri: hyobs:hasObsBegTime
+    title: Starting Time of Daily Runoff Time Series
+    description: Specific date/year when the daily runoff time series in the dataset begins
+    range: integer
+  gapsPre:
+    slot_uri: hyobs:gapsPre
+    title: Fraction of Gaps - Raw Hourly Runoff Time Series
+    description: Represents the fraction of gaps in the raw hourly runoff time series
+    range: decimal
+  gapsPost:
+    slot_uri: hyobs:gapsPost
+    title: Fraction of Gaps - Processed Hourly Runoff Time Series
+    description: Represents Fraction of gaps in the hourly runoff time series after processing
+    range: decimal
+  areaRatio:
+    slot_uri: hyobs:areaRatio
+    title: Area Ratio
+    description: Ratio between variable area_calc of basin delineation A and area_gov
+    range: decimal
+  euHydroID:
+    slot_uri: hyobs:euHydroID
+    title: EU-Hydro - River Network ID
+    description: OBJECT_ID of the next river segment from stream network EU-Hydro - River Network Database
+    range: string
+  hyrivID:
+    slot_uri: hyobs:hyrivID
+    title: RiverATLAS ID
+    description: HYRIV_ID of the next river segment from stream network RiverATLAS
+    range: string
+  meanElevation:
+    slot_uri: hyobs:meanElevation
+    title: Mean Elevation
+    description: Mean elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres.
+    range: decimal
+  medianElevation:
+    slot_uri: hyobs:medianElevation
+    title: Median Elevation
+    description: Median elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres.
+    range: decimal
+  standardDeviationElevation:
+    slot_uri: hyobs:standardDeviationElevation
+    title: Standard Deviation of Elevation
+    description: 'Hydrological or environmental attribute: standard deviation elevation.'
+    range: decimal
+  elevationRange:
+    slot_uri: hyobs:elevationRange
+    title: Elevation Range
+    description: 'Hydrological or environmental attribute: elevation range.'
+    range: decimal
+  meanSlope:
+    slot_uri: hyobs:meanSlope
+    title: Mean Slope
+    description: Mean terrain slope of a catchment or spatial unit.
+    range: decimal
+  precipitationSeasonality:
+    slot_uri: hyobs:precipitationSeasonality
+    title: Precipitation Seasonality
+    description: Seasonality index describing the timing and distribution of precipitation through the year.
+    range: decimal
+  elonRatio:
+    slot_uri: hyobs:elonRatio
+    title: Elongation Ratio
+    description: Ratio between the diameter of an equivalent circle and the area of the catchment area to its length
+    range: decimal
+  hasStrmDensity:
+    slot_uri: hyobs:hasStrmDensity
+    title: Stream Density
+    description: Ratio of lengths of streams LF and the catchment area A, DF=sumLFA
+    range: decimal
+  hasPSeason:
+    slot_uri: hyobs:hasPSeason
+    title: Precipitation Seasonality
+    description: Seasonality and timing of precipitation using sine curves; positive values for summer-dominated, negative
+      for winter-dominated precipitation
+    range: decimal
+  hasMeanDailyPrecip:
+    slot_uri: hyobs:hasMeanDailyPrecip
+    title: Mean Daily Precipitation
+    description: Long-term mean daily precipitation for a catchment or spatial unit.
+    range: decimal
+  hasMeanEvapotranspiration:
+    slot_uri: hyobs:hasMeanEvapotranspiration
+    title: Mean Daily Evapotranspiration
+    description: Long-term mean daily evapotranspiration for a catchment or spatial unit.
+    range: decimal
+  hasReferenceEvapotranspiration:
+    slot_uri: hyobs:hasReferenceEvapotranspiration
+    title: Reference Evapotranspiration
+    description: 'Hydrological or environmental attribute: has reference evapotranspiration.'
+    range: decimal
+  hasAridityIndex:
+    slot_uri: hyobs:hasAridityIndex
+    title: Aridity Index
+    description: Aridity index of a catchment or spatial unit.
+    range: decimal
+  hasReciprocalAridityIndex:
+    slot_uri: hyobs:hasReciprocalAridityIndex
+    title: Reciprocal Aridity Index
+    description: 'Hydrological or environmental attribute: has reciprocal aridity index.'
+    range: decimal
+  hasSnowFraction:
+    slot_uri: hyobs:hasSnowFraction
+    title: Snow Fraction
+    description: Fraction of precipitation that falls as snow.
+    range: decimal
+  hasHighPrecFrequency:
+    slot_uri: hyobs:hasHighPrecFrequency
+    title: High Precipitation Frequency
+    description: 'Hydrological or environmental attribute: has high prec frequency.'
+    range: decimal
+  hasHighPrecipitationDuration:
+    slot_uri: hyobs:hasHighPrecipitationDuration
+    title: High Precipitation Duration
+    description: 'Hydrological or environmental attribute: has high precipitation duration.'
+    range: decimal
+  hasLowPrecFrequency:
+    slot_uri: hyobs:hasLowPrecFrequency
+    title: Low Precipitation Frequency
+    description: 'Hydrological or environmental attribute: has low prec frequency.'
+    range: decimal
+  hasLowPrecipitationDuration:
+    slot_uri: hyobs:hasLowPrecipitationDuration
+    title: Low Precipitation Duration
+    description: 'Hydrological or environmental attribute: has low precipitation duration.'
+    range: decimal
+  hasAgriculturalAreaFraction:
+    slot_uri: hyobs:hasAgriculturalAreaFraction
+    title: Agricultural Area Fraction
+    description: Fractional value describing agricultural area fraction for a catchment or spatial unit.
+    range: decimal
+  hasBareAreaFraction:
+    slot_uri: hyobs:hasBareAreaFraction
+    title: Bare Area Fraction
+    description: Fractional value describing bare area fraction for a catchment or spatial unit.
+    range: decimal
+  hasForestAreaFraction:
+    slot_uri: hyobs:hasForestAreaFraction
+    title: Forest Area Fraction
+    description: Fractional value describing forest area fraction for a catchment or spatial unit.
+    range: decimal
+  hasGlacierAreaFraction:
+    slot_uri: hyobs:hasGlacierAreaFraction
+    title: Glacier Area Fraction
+    description: Fractional value describing glacier area fraction for a catchment or spatial unit.
+    range: decimal
+  hasLakeAreaFraction:
+    slot_uri: hyobs:hasLakeAreaFraction
+    title: Lake Area Fraction
+    description: Fractional value describing lake area fraction for a catchment or spatial unit.
+    range: decimal
+  hasUrbanAreaFraction:
+    slot_uri: hyobs:hasUrbanAreaFraction
+    title: Urban Area Fraction
+    description: Fractional value describing urban area fraction for a catchment or spatial unit.
+    range: decimal
+  hasMaxLeafAreaIndex:
+    slot_uri: hyobs:hasMaxLeafAreaIndex
+    title: Maximum Average Leaf Area Index
+    description: 'Hydrological or environmental attribute: has max leaf area index.'
+    range: decimal
+  hasRangeLeafAreaIndex:
+    slot_uri: hyobs:hasRangeLeafAreaIndex
+    title: Range of Average Leaf Area Index
+    description: 'Hydrological or environmental attribute: has range leaf area index.'
+    range: decimal
+  hasMaxNDVI:
+    slot_uri: hyobs:hasMaxNDVI
+    title: Maximum Average NDVI
+    description: 'Hydrological or environmental attribute: has max ndvi.'
+    range: decimal
+  hasMinNDVI:
+    slot_uri: hyobs:hasMinNDVI
+    title: Minimum Average NDVI
+    description: 'Hydrological or environmental attribute: has min ndvi.'
+    range: decimal
+  hasMaxGreenVegetationFraction:
+    slot_uri: hyobs:hasMaxGreenVegetationFraction
+    title: Maximum Green Vegetation Fraction
+    description: Fractional value describing max green vegetation fraction for a catchment or spatial unit.
+    range: decimal
+  hasRangeGreenVegetationFraction:
+    slot_uri: hyobs:hasRangeGreenVegetationFraction
+    title: Range of Green Vegetation Fraction
+    description: Fractional value describing range green vegetation fraction for a catchment or spatial unit.
+    range: decimal
+  hasDepthToBedrock:
+    slot_uri: hyobs:hasDepthToBedrock
+    title: Depth to Bedrock
+    description: Depth to bedrock from the surface of a point or an area
+    range: decimal
+  hasRootDepth:
+    slot_uri: hyobs:hasRootDepth
+    title: Available Root Depth
+    description: Depth available for roots in soil layer from the surface
+    range: decimal
+  hasTotalAvailableWaterContent:
+    slot_uri: hyobs:hasTotalAvailableWaterContent
+    title: Total Available Water Content
+    description: 'Hydrological or environmental attribute: has total available water content.'
+    range: decimal
+  hasSandFraction:
+    slot_uri: hyobs:hasSandFraction
+    title: Sand Fraction
+    description: Fractional value describing sand fraction for a catchment or spatial unit.
+    range: decimal
+  hasSiltFraction:
+    slot_uri: hyobs:hasSiltFraction
+    title: Silt Fraction
+    description: Fractional value describing silt fraction for a catchment or spatial unit.
+    range: decimal
+  hasClayFraction:
+    slot_uri: hyobs:hasClayFraction
+    title: Clay Fraction
+    description: Fractional value describing clay fraction for a catchment or spatial unit.
+    range: decimal
+  hasGravelFraction:
+    slot_uri: hyobs:hasGravelFraction
+    title: Gravel Fraction
+    description: Gravel fraction of a soil material
+    range: decimal
+  hasOrganicFraction:
+    slot_uri: hyobs:hasOrganicFraction
+    title: Organic Fraction
+    description: Fractional value describing organic fraction for a catchment or spatial unit.
+    range: decimal
+  hasIceAndGlacierFraction:
+    slot_uri: hyobs:hasIceAndGlacierFraction
+    title: Ice and Glacier Fraction
+    description: Fractional value describing ice and glacier fraction for a catchment or spatial unit.
+    range: decimal
+  hasMetamorphitesFraction:
+    slot_uri: hyobs:hasMetamorphitesFraction
+    title: Metamorphites Fraction
+    description: Fractional value describing metamorphites fraction for a catchment or spatial unit.
+    range: decimal
+  hasAcidPlutonicRocksFraction:
+    slot_uri: hyobs:hasAcidPlutonicRocksFraction
+    title: Acid Plutonic Rocks Fraction
+    description: Fractional value describing acid plutonic rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasBasicPlutonicRocksFraction:
+    slot_uri: hyobs:hasBasicPlutonicRocksFraction
+    title: Basic Plutonic Rocks Fraction
+    description: Fractional value describing basic plutonic rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasIntermediatePlutonicRocksFraction:
+    slot_uri: hyobs:hasIntermediatePlutonicRocksFraction
+    title: Intermediate Plutonic Rocks Fraction
+    description: Fractional value describing intermediate plutonic rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasPyroclasticsFraction:
+    slot_uri: hyobs:hasPyroclasticsFraction
+    title: Pyroclastics Fraction
+    description: Fractional value describing pyroclastics fraction for a catchment or spatial unit.
+    range: decimal
+  hasCarbonateSedimentaryRocksFraction:
+    slot_uri: hyobs:hasCarbonateSedimentaryRocksFraction
+    title: Carbonate Sedimentary Rocks Fraction
+    description: Fractional value describing carbonate sedimentary rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasMixedSedimentaryRocksFraction:
+    slot_uri: hyobs:hasMixedSedimentaryRocksFraction
+    title: Mixed Sedimentary Rocks Fraction
+    description: Fractional value describing mixed sedimentary rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasSiliciclasticSedimentaryRocksFraction:
+    slot_uri: hyobs:hasSiliciclasticSedimentaryRocksFraction
+    title: Siliciclastic Sedimentary Rocks Fraction
+    description: Fractional value describing siliciclastic sedimentary rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasUnconsolidatedSedimentsFraction:
+    slot_uri: hyobs:hasUnconsolidatedSedimentsFraction
+    title: Unconsolidated Sediments Fraction
+    description: Fractional value describing unconsolidated sediments fraction for a catchment or spatial unit.
+    range: decimal
+  hasAcidVolcanicRocksFraction:
+    slot_uri: hyobs:hasAcidVolcanicRocksFraction
+    title: Acid Volcanic Rocks Fraction
+    description: Fractional value describing acid volcanic rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasBasicVolcanicRocksFraction:
+    slot_uri: hyobs:hasBasicVolcanicRocksFraction
+    title: Basic Volcanic Rocks Fraction
+    description: Fractional value describing basic volcanic rocks fraction for a catchment or spatial unit.
+    range: decimal
+  hasWaterBodiesFraction:
+    slot_uri: hyobs:hasWaterBodiesFraction
+    title: Water Bodies Fraction
+    description: Fractional value describing water bodies fraction for a catchment or spatial unit.
+    range: decimal
+  hasSubsurfacePermeabilityFraction:
+    slot_uri: hyobs:hasSubsurfacePermeabilityFraction
+    title: Subsurface Permeability Fraction
+    description: Fractional value describing subsurface permeability fraction for a catchment or spatial unit.
+    range: decimal
+  hasSubsurfacePorosityFraction:
+    slot_uri: hyobs:hasSubsurfacePorosityFraction
+    title: Subsurface Porosity Fraction
+    description: Fractional value describing subsurface porosity fraction for a catchment or spatial unit.
+    range: decimal
+  hasCatchmentArea:
+    slot_uri: hyobs:hasCatchmentArea
+    title: Has Catchment Area
+    description: Area of a catchment, represented either as a decimal value or as a QUDT quantity value with an explicit area
+      unit.
+    range: decimal
+  minElevation:
+    slot_uri: hyobs:minElevation
+    title: Minimum Elevation
+    description: Minimum elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres.
+    range: decimal
+  elevation10thPercentile:
+    slot_uri: hyobs:elevation10thPercentile
+    title: 10th Percentile Elevation
+    description: 'Hydrological or environmental attribute: elevation 10 th percentile.'
+    range: decimal
+  elevation90thPercentile:
+    slot_uri: hyobs:elevation90thPercentile
+    title: 90th Percentile Elevation
+    description: 'Hydrological or environmental attribute: elevation 90 th percentile.'
+    range: decimal
+  maxElevation:
+    slot_uri: hyobs:maxElevation
+    title: Maximum Elevation
+    description: Maximum elevation of a catchment or spatial unit, normally expressed as a QUDT quantity value in metres.
+    range: decimal
+  meanDailyDischarge:
+    slot_uri: hyobs:meanDailyDischarge
+    title: Mean Daily Discharge
+    description: 'Hydrological or environmental attribute: mean daily discharge.'
+    range: decimal
+  flowPeriodStart:
+    slot_uri: hyobs:flowPeriodStart
+    title: Flow Period Start
+    description: First date that daily flow time series in CAMELS-GB are available for this gauging station.
+    range: date
+  flowPeriodEnd:
+    slot_uri: hyobs:flowPeriodEnd
+    title: Flow Period End
+    description: End date that daily flow time series in CAMELS-GB are available for this gauging station.
+    range: date
+  flowPercentComplete:
+    slot_uri: hyobs:flowPercentComplete
+    title: Flow Percent Complete
+    description: Percentage of days with flow data available from 1 Oct 1970 to 31 Sep 2015.
+    range: decimal
+  bankfullFlow:
+    slot_uri: hyobs:bankfullFlow
+    title: Bankfull Flow
+    description: Flow at which the river begins to overflow the banks at a gauging station.
+    range: decimal
+  structurefullFlow:
+    slot_uri: hyobs:structurefullFlow
+    title: Structurefull Flow
+    description: Flow at which the river reaches the wingwalls of a structure at a gauging station.
+    range: decimal
+  uncertaintyUpper:
+    slot_uri: hyobs:uncertaintyUpper
+    title: Uncertainty Upper
+    description: Upper bound of discharge uncertainty interval for XX percentile flow, as percentage.
+    range: decimal
+  uncertaintyLower:
+    slot_uri: hyobs:uncertaintyLower
+    title: Uncertainty Lower
+    description: Lower bound of discharge uncertainty interval for XX percentile flow, as percentage.
+    range: decimal
+  dischargeUncertaintyMetadata:
+    slot_uri: hyobs:dischargeUncertaintyMetadata
+    title: Discharge Uncertainty Metadata
+    description: Metadata explaining why discharge uncertainty estimates are (not) provided.
+    range: string
+  hasMeanDischarge:
+    slot_uri: hyobs:hasMeanDischarge
+    title: Has Mean Discharge
+    description: Mean daily discharge.
+    range: decimal
+  hasRunoffRatio:
+    slot_uri: hyobs:hasRunoffRatio
+    title: Has Runoff Ratio
+    description: Ratio of runoff to precipitation for a catchment.
+    range: decimal
+  hasStreamflowElasticity:
+    slot_uri: hyobs:hasStreamflowElasticity
+    title: Has Streamflow Elasticity
+    description: 'Hydrological or environmental attribute: has streamflow elasticity.'
+    range: decimal
+  hasFlowDurationCurveSlope:
+    slot_uri: hyobs:hasFlowDurationCurveSlope
+    title: Has Flow Duration Curve Slope
+    description: 'Hydrological or environmental attribute: has flow duration curve slope.'
+    range: decimal
+  hasBaseflowIndexLadson:
+    slot_uri: hyobs:hasBaseflowIndexLadson
+    title: Has Baseflow Index Ladson
+    description: 'Hydrological or environmental attribute: has baseflow index ladson.'
+    range: decimal
+  hasBaseflowIndexCEH:
+    slot_uri: hyobs:hasBaseflowIndexCEH
+    title: Has Baseflow Index CEH
+    description: 'Hydrological or environmental attribute: has baseflow index ceh.'
+    range: decimal
+  hasMeanHalfFlowDate:
+    slot_uri: hyobs:hasMeanHalfFlowDate
+    title: Has Mean Half Flow Date
+    description: Date value for has mean half flow date.
+    range: date
+  hasLowFlowQuantile5:
+    slot_uri: hyobs:hasLowFlowQuantile5
+    title: Has Low Flow Quantile 5%
+    description: Low-flow quantile corresponding to the 5th percentile of streamflow.
+    range: decimal
+  hasHighFlowQuantile95:
+    slot_uri: hyobs:hasHighFlowQuantile95
+    title: Has High Flow Quantile 95%
+    description: High-flow quantile corresponding to the 95th percentile of streamflow.
+    range: decimal
+  hasHighFlowFrequency:
+    slot_uri: hyobs:hasHighFlowFrequency
+    title: Has High Flow Frequency
+    description: 'Hydrological or environmental attribute: has high flow frequency.'
+    range: decimal
+  hasHighFlowDuration:
+    slot_uri: hyobs:hasHighFlowDuration
+    title: Has High Flow Duration
+    description: 'Hydrological or environmental attribute: has high flow duration.'
+    range: decimal
+  hasLowFlowFrequency:
+    slot_uri: hyobs:hasLowFlowFrequency
+    title: Has Low Flow Frequency
+    description: 'Hydrological or environmental attribute: has low flow frequency.'
+    range: decimal
+  hasLowFlowDuration:
+    slot_uri: hyobs:hasLowFlowDuration
+    title: Has Low Flow Duration
+    description: 'Hydrological or environmental attribute: has low flow duration.'
+    range: decimal
+  hasZeroFlowFraction:
+    slot_uri: hyobs:hasZeroFlowFraction
+    title: Has Zero Flow Fraction
+    description: Fractional value describing zero flow fraction for a catchment or spatial unit.
+    range: decimal
+  hasDeciduousWoodlandFraction:
+    slot_uri: hyobs:hasDeciduousWoodlandFraction
+    title: Has Deciduous Woodland Fraction
+    description: Fractional value describing deciduous woodland fraction for a catchment or spatial unit.
+    range: decimal
+  hasEvergreenWoodlandFraction:
+    slot_uri: hyobs:hasEvergreenWoodlandFraction
+    title: Has Evergreen Woodland Fraction
+    description: Fractional value describing evergreen woodland fraction for a catchment or spatial unit.
+    range: decimal
+  hasGrassCoverFraction:
+    slot_uri: hyobs:hasGrassCoverFraction
+    title: Has Grass Cover Fraction
+    description: Fractional value describing grass cover fraction for a catchment or spatial unit.
+    range: decimal
+  hasShrubCoverFraction:
+    slot_uri: hyobs:hasShrubCoverFraction
+    title: Has Shrub Cover Fraction
+    description: Fractional value describing shrub cover fraction for a catchment or spatial unit.
+    range: decimal
+  hasCropCoverFraction:
+    slot_uri: hyobs:hasCropCoverFraction
+    title: Has Crop Cover Fraction
+    description: Fractional value describing crop cover fraction for a catchment or spatial unit.
+    range: decimal
+  hasUrbanCoverFraction:
+    slot_uri: hyobs:hasUrbanCoverFraction
+    title: Has Urban Cover Fraction
+    description: Fractional value describing urban cover fraction for a catchment or spatial unit.
+    range: decimal
+  hasInlandWaterCoverFraction:
+    slot_uri: hyobs:hasInlandWaterCoverFraction
+    title: Has Inland Water Cover Fraction
+    description: Fractional value describing inland water cover fraction for a catchment or spatial unit.
+    range: decimal
+  hasBareSoilAndRockFraction:
+    slot_uri: hyobs:hasBareSoilAndRockFraction
+    title: Has Bare Soil And Rock Fraction
+    description: Fractional value describing bare soil and rock fraction for a catchment or spatial unit.
+    range: decimal
+  bulkDensity:
+    slot_uri: hyobs:bulkDensity
+    title: Bulk Density
+    description: 'Hydrological or environmental attribute: bulk density.'
+    range: decimal
+  volumetricPorosityPtfSandClay:
+    slot_uri: hyobs:volumetricPorosityPTF_SandClay
+    title: Volumetric Porosity (Sand & Clay PTF)
+    description: Volumetric porosity estimated using a pedo-transfer function based on sand and clay fractions.
+    range: decimal
+  volumetricPorosityPtfSiltClayOm:
+    slot_uri: hyobs:volumetricPorosityPTF_SiltClayOM
+    title: Volumetric Porosity (Silt, Clay, OM PTF)
+    description: Volumetric porosity estimated using a PTF based on silt/clay/OM/bulk density and topsoil indicator.
+    range: decimal
+  saturatedHydraulicConductivityPtfSandClay:
+    slot_uri: hyobs:saturatedHydraulicConductivityPTF_SandClay
+    title: Saturated Hydraulic Conductivity (Sand & Clay PTF)
+    description: Saturated hydraulic conductivity estimated using a PTF based on sand and clay fractions.
+    range: decimal
+  saturatedHydraulicConductivityPtfSiltClayOm:
+    slot_uri: hyobs:saturatedHydraulicConductivityPTF_SiltClayOM
+    title: Saturated Hydraulic Conductivity (Silt, Clay, OM PTF)
+    description: Estimated using a PTF based on silt/clay/OM/bulk density and topsoil.
+    range: decimal
+  depthToBedrock:
+    slot_uri: hyobs:depthToBedrock
+    title: Depth to Bedrock
+    description: 'Hydrological or environmental attribute: depth to bedrock.'
+    range: decimal
+  benchmarkCatch:
+    slot_uri: hyobs:benchmarkCatch
+    title: Benchmark Catchment
+    description: Indicator whether the catchment is a benchmark site.
+    range: boolean
+  meanSurfaceWaterAbstraction:
+    slot_uri: hyobs:meanSurfaceWaterAbstraction
+    title: Mean Surface Water Abstraction
+    description: Average volume of surface water abstracted.
+    range: decimal
+  meanGroundwaterAbstraction:
+    slot_uri: hyobs:meanGroundwaterAbstraction
+    title: Mean Groundwater Abstraction
+    description: Average volume of groundwater abstracted.
+    range: decimal
+  meanDischarges:
+    slot_uri: hyobs:meanDischarges
+    title: Mean Discharges
+    description: Mean daily discharges into water courses from permit holders.
+    range: decimal
+  pctAbstractionAgriculture:
+    slot_uri: hyobs:pctAbstractionAgriculture
+    title: percentage Abstraction for Agriculture
+    description: Percentage of total abstractions for agriculture.
+    range: decimal
+  pctAbstractionAmenities:
+    slot_uri: hyobs:pctAbstractionAmenities
+    title: percentage Abstraction for Amenities
+    description: Percentage of total abstractions for amenities.
+    range: decimal
+  pctAbstractionEnergy:
+    slot_uri: hyobs:pctAbstractionEnergy
+    title: percentage Abstraction for Energy
+    description: Percentage of total abstractions for energy production.
+    range: decimal
+  pctAbstractionEnvironmental:
+    slot_uri: hyobs:pctAbstractionEnvironmental
+    title: percentage Abstraction for Environment
+    description: Percentage of total abstractions for environmental purposes.
+    range: decimal
+  pctAbstractionIndustry:
+    slot_uri: hyobs:pctAbstractionIndustry
+    title: percentage Abstraction for Industry
+    description: Percentage of total abstractions for industrial, commercial and public services.
+    range: decimal
+  pctAbstractionWaterSupply:
+    slot_uri: hyobs:pctAbstractionWaterSupply
+    title: percentage Abstraction for Water Supply
+    description: Percentage of total abstractions for water supply.
+    range: decimal
+  numberOfReservoirs:
+    slot_uri: hyobs:numberOfReservoirs
+    title: Number of Reservoirs
+    description: Number of reservoirs in the catchment.
+    range: integer
+  reservoirStorageMegalitres:
+    slot_uri: hyobs:reservoirStorageMegalitres
+    title: Reservoir Storage (ML)
+    description: Total storage capacity of reservoirs in the catchment in megalitres.
+    range: decimal
+  pctReservoirHydroelectric:
+    slot_uri: hyobs:pctReservoirHydroelectric
+    title: Reservoir Use for Hydroelectricity
+    description: Percentage of total reservoir storage used for hydroelectricity.
+    range: decimal
+  pctReservoirNavigation:
+    slot_uri: hyobs:pctReservoirNavigation
+    title: Percentage Reservoir Use for Navigation
+    description: Percentage of total reservoir storage used for navigation.
+    range: decimal
+  pctReservoirDrainage:
+    slot_uri: hyobs:pctReservoirDrainage
+    title: Percentage Reservoir Use for Drainage
+    description: Percentage of total reservoir storage used for drainage.
+    range: decimal
+  pctReservoirWaterResources:
+    slot_uri: hyobs:pctReservoirWaterResources
+    title: Percentage Reservoir Use for Water Resources
+    description: Percentage of total reservoir storage used for water resources.
+    range: decimal
+  pctReservoirFloodStorage:
+    slot_uri: hyobs:pctReservoirFloodStorage
+    title: Percentage Reservoir Use for Flood Storage
+    description: Percentage of total reservoir storage used for flood storage.
+    range: decimal
+  pctReservoirEnvironmental:
+    slot_uri: hyobs:pctReservoirEnvironmental
+    title: Percentage Reservoir Use for Environment
+    description: Percentage of total reservoir storage used for environmental purposes.
+    range: decimal
+  pctReservoirUnknownUse:
+    slot_uri: hyobs:pctReservoirUnknownUse
+    title: Percentage Reservoir Use Unknown
+    description: Percentage of total reservoir storage where no use data were available.
+    range: decimal
+  yearFirstReservoirBuilt:
+    slot_uri: hyobs:yearFirstReservoirBuilt
+    title: Year First Reservoir Built
+    description: Year the first reservoir in the catchment was built.
+    range: integer
+  yearLastReservoirBuilt:
+    slot_uri: hyobs:yearLastReservoirBuilt
+    title: Year Last Reservoir Built
+    description: Year the last reservoir in the catchment was built.
+    range: integer
+  airTemperatureMeanAnnual:
+    slot_uri: hyobs:airTemperatureMeanAnnual
+    title: Air Temperature Mean Annual
+    description: 'Hydrological or environmental attribute: air temperature mean annual.'
+    range: decimal
+  area_ratio:
+    slot_uri: hyobs:area_ratio
+    title: Area Ratio
+    description: 'Hydrological or environmental attribute: area ratio.'
+    range: decimal
+  aridityIndex:
+    slot_uri: hyobs:aridityIndex
+    title: Aridity Index
+    description: Aridity index of a catchment or spatial unit.
+    range: decimal
+  baseflowIndex:
+    slot_uri: hyobs:baseflowIndex
+    title: Baseflow Index
+    description: Baseflow index describing the fraction of streamflow sustained by baseflow.
+    range: decimal
+  bodTotalYieldPerKm2PerYear:
+    slot_uri: hyobs:bodTotalYieldPerKm2PerYear
+    title: BOD Total Yield Per Km 2 Per Year
+    description: Annual yield of bod total yield per km 2 per year normalized by catchment area.
+    range: decimal
+  catchment_area_calculated:
+    slot_uri: hyobs:catchment_area_calculated
+    title: Catchment Area Calculated
+    description: 'Hydrological or environmental attribute: catchment area calculated.'
+    range: decimal
+  crs:
+    slot_uri: hyobs:crs
+    title: CRS
+    description: Coordinate reference system associated with a geometry, typically CRS84 for WKT geometries in longitude-latitude
+      order.
+    range: uriorcurie
+  dailyObsStartYear:
+    slot_uri: hyobs:dailyObsStartYear
+    title: Daily Obs Start Year
+    description: 'Hydrological or environmental attribute: daily obs start year.'
+    range: decimal
+  ddhad:
+    slot_uri: hyobs:ddhad
+    title: Ddhad
+    description: 'Hydrological or environmental attribute: ddhad.'
+    range: decimal
+  drainageDensity:
+    slot_uri: hyobs:drainageDensity
+    title: Drainage Density
+    description: Drainage density of a catchment, usually calculated as stream length per unit catchment area.
+    range: decimal
+  elon_ratio:
+    slot_uri: hyobs:elon_ratio
+    title: Elon Ratio
+    description: 'Hydrological or environmental attribute: elon ratio.'
+    range: decimal
+  eu_Hydro_ID:
+    slot_uri: hyobs:eu_Hydro_ID
+    title: Eu Hydro Id
+    description: 'Hydrological or environmental attribute: eu hydro id.'
+    range: decimal
+  ewCount:
+    slot_uri: hyobs:ewCount
+    title: Ew Count
+    description: Count value for ew count.
+    range: integer
+  fertilizerPerHa:
+    slot_uri: hyobs:fertilizerPerHa
+    title: Fertilizer Per Ha
+    description: 'Hydrological or environmental attribute: fertilizer per ha.'
+    range: decimal
+  flashinessIndex:
+    slot_uri: hyobs:flashinessIndex
+    title: Flashiness Index
+    description: Hydrological flashiness index describing short-term variability of streamflow.
+    range: decimal
+  fractionAgriHetero:
+    slot_uri: hyobs:fractionAgriHetero
+    title: Fraction Agri Hetero
+    description: Fractional value describing fraction agri hetero for a catchment or spatial unit.
+    range: decimal
+  fractionAgriHetero2018:
+    slot_uri: hyobs:fractionAgriHetero2018
+    title: Fraction Agri Hetero 2018
+    description: Fractional value describing fraction agri hetero 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionAgriPerm:
+    slot_uri: hyobs:fractionAgriPerm
+    title: Fraction Agri Perm
+    description: Fractional value describing fraction agri perm for a catchment or spatial unit.
+    range: decimal
+  fractionAgriPerm2018:
+    slot_uri: hyobs:fractionAgriPerm2018
+    title: Fraction Agri Perm 2018
+    description: Fractional value describing fraction agri perm 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionAgric:
+    slot_uri: hyobs:fractionAgric
+    title: Fraction Agric
+    description: Fractional value describing fraction agric for a catchment or spatial unit.
+    range: decimal
+  fractionAgric2018:
+    slot_uri: hyobs:fractionAgric2018
+    title: Fraction Agric 2018
+    description: Fractional value describing fraction agric 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionArable:
+    slot_uri: hyobs:fractionArable
+    title: Fraction Arable
+    description: Fractional value describing fraction arable for a catchment or spatial unit.
+    range: decimal
+  fractionArable2018:
+    slot_uri: hyobs:fractionArable2018
+    title: Fraction Arable 2018
+    description: Fractional value describing fraction arable 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionAreaInGermany:
+    slot_uri: hyobs:fractionAreaInGermany
+    title: Fraction Area In Germany
+    description: Fractional value describing fraction area in germany for a catchment or spatial unit.
+    range: decimal
+  fractionArtif:
+    slot_uri: hyobs:fractionArtif
+    title: Fraction Artif
+    description: Fractional value describing fraction artif for a catchment or spatial unit.
+    range: decimal
+  fractionArtif2018:
+    slot_uri: hyobs:fractionArtif2018
+    title: Fraction Artif 2018
+    description: Fractional value describing fraction artif 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionCalc:
+    slot_uri: hyobs:fractionCalc
+    title: Fraction Calc
+    description: Fractional value describing fraction calc for a catchment or spatial unit.
+    range: decimal
+  fractionCalcSed:
+    slot_uri: hyobs:fractionCalcSed
+    title: Fraction Calc Sed
+    description: Fractional value describing fraction calc sed for a catchment or spatial unit.
+    range: decimal
+  fractionClay:
+    slot_uri: hyobs:fractionClay
+    title: Fraction Clay
+    description: Fractional value describing fraction clay for a catchment or spatial unit.
+    range: decimal
+  fractionClayAgri:
+    slot_uri: hyobs:fractionClayAgri
+    title: Fraction Clay Agri
+    description: Fractional value describing fraction clay agri for a catchment or spatial unit.
+    range: decimal
+  fractionConsol:
+    slot_uri: hyobs:fractionConsol
+    title: Fraction Consol
+    description: Fractional value describing fraction consol for a catchment or spatial unit.
+    range: decimal
+  fractionFiss1:
+    slot_uri: hyobs:fractionFiss1
+    title: Fraction Fiss 1
+    description: Fractional value describing fraction fiss 1 for a catchment or spatial unit.
+    range: decimal
+  fractionFiss2:
+    slot_uri: hyobs:fractionFiss2
+    title: Fraction Fiss 2
+    description: Fractional value describing fraction fiss 2 for a catchment or spatial unit.
+    range: decimal
+  fractionFissured:
+    slot_uri: hyobs:fractionFissured
+    title: Fraction Fissured
+    description: Fractional value describing fraction fissured for a catchment or spatial unit.
+    range: decimal
+  fractionFores:
+    slot_uri: hyobs:fractionFores
+    title: Fraction Fores
+    description: Fractional value describing fraction fores for a catchment or spatial unit.
+    range: decimal
+  fractionFores2018:
+    slot_uri: hyobs:fractionFores2018
+    title: Fraction Fores 2018
+    description: Fractional value describing fraction fores 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionForest:
+    slot_uri: hyobs:fractionForest
+    title: Fraction Forest
+    description: Fractional value describing fraction forest for a catchment or spatial unit.
+    range: decimal
+  fractionForest2018:
+    slot_uri: hyobs:fractionForest2018
+    title: Fraction Forest 2018
+    description: Fractional value describing fraction forest 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionGwsoils:
+    slot_uri: hyobs:fractionGwsoils
+    title: Fraction Gwsoils
+    description: Fractional value describing fraction gwsoils for a catchment or spatial unit.
+    range: decimal
+  fractionHard:
+    slot_uri: hyobs:fractionHard
+    title: Fraction Hard
+    description: Fractional value describing fraction hard for a catchment or spatial unit.
+    range: decimal
+  fractionHard1:
+    slot_uri: hyobs:fractionHard1
+    title: Fraction Hard 1
+    description: Fractional value describing fraction hard 1 for a catchment or spatial unit.
+    range: decimal
+  fractionHard2:
+    slot_uri: hyobs:fractionHard2
+    title: Fraction Hard 2
+    description: Fractional value describing fraction hard 2 for a catchment or spatial unit.
+    range: decimal
+  fractionIce:
+    slot_uri: hyobs:fractionIce
+    title: Fraction Ice
+    description: Fractional value describing fraction ice for a catchment or spatial unit.
+    range: decimal
+  fractionIndustry:
+    slot_uri: hyobs:fractionIndustry
+    title: Fraction Industry
+    description: Fractional value describing fraction industry for a catchment or spatial unit.
+    range: decimal
+  fractionIndustry2018:
+    slot_uri: hyobs:fractionIndustry2018
+    title: Fraction Industry 2018
+    description: Fractional value describing fraction industry 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionInwater:
+    slot_uri: hyobs:fractionInwater
+    title: Fraction Inwater
+    description: Fractional value describing fraction inwater for a catchment or spatial unit.
+    range: decimal
+  fractionMagma:
+    slot_uri: hyobs:fractionMagma
+    title: Fraction Magma
+    description: Fractional value describing fraction magma for a catchment or spatial unit.
+    range: decimal
+  fractionMetam:
+    slot_uri: hyobs:fractionMetam
+    title: Fraction Metam
+    description: Fractional value describing fraction metam for a catchment or spatial unit.
+    range: decimal
+  fractionMine:
+    slot_uri: hyobs:fractionMine
+    title: Fraction Mine
+    description: Fractional value describing fraction mine for a catchment or spatial unit.
+    range: decimal
+  fractionMine2018:
+    slot_uri: hyobs:fractionMine2018
+    title: Fraction Mine 2018
+    description: Fractional value describing fraction mine 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionNPointPopulation1991:
+    slot_uri: hyobs:fractionNPointPopulation1991
+    title: Fraction Npoint Population 1991
+    description: Fractional value describing fraction npoint population 1991 for a catchment or spatial unit.
+    range: decimal
+  fractionNPointPopulation2010:
+    slot_uri: hyobs:fractionNPointPopulation2010
+    title: Fraction Npoint Population 2010
+    description: Fractional value describing fraction npoint population 2010 for a catchment or spatial unit.
+    range: decimal
+  fractionNPointWwtp1991:
+    slot_uri: hyobs:fractionNPointWwtp1991
+    title: Fraction Npoint WWTP 1991
+    description: Fractional value describing fraction npoint wwtp 1991 for a catchment or spatial unit.
+    range: decimal
+  fractionNPointWwtp2010:
+    slot_uri: hyobs:fractionNPointWwtp2010
+    title: Fraction Npoint WWTP 2010
+    description: Fractional value describing fraction npoint wwtp 2010 for a catchment or spatial unit.
+    range: decimal
+  fractionOpen:
+    slot_uri: hyobs:fractionOpen
+    title: Fraction Open
+    description: Fractional value describing fraction open for a catchment or spatial unit.
+    range: decimal
+  fractionOpen2018:
+    slot_uri: hyobs:fractionOpen2018
+    title: Fraction Open 2018
+    description: Fractional value describing fraction open 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionPartConsol:
+    slot_uri: hyobs:fractionPartConsol
+    title: Fraction Part Consol
+    description: Fractional value describing fraction part consol for a catchment or spatial unit.
+    range: decimal
+  fractionPastures:
+    slot_uri: hyobs:fractionPastures
+    title: Fraction Pastures
+    description: Fractional value describing fraction pastures for a catchment or spatial unit.
+    range: decimal
+  fractionPastures2018:
+    slot_uri: hyobs:fractionPastures2018
+    title: Fraction Pastures 2018
+    description: Fractional value describing fraction pastures 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionPorous:
+    slot_uri: hyobs:fractionPorous
+    title: Fraction Porous
+    description: Fractional value describing fraction porous for a catchment or spatial unit.
+    range: decimal
+  fractionPorous1:
+    slot_uri: hyobs:fractionPorous1
+    title: Fraction Porous 1
+    description: Fractional value describing fraction porous 1 for a catchment or spatial unit.
+    range: decimal
+  fractionPorous2:
+    slot_uri: hyobs:fractionPorous2
+    title: Fraction Porous 2
+    description: Fractional value describing fraction porous 2 for a catchment or spatial unit.
+    range: decimal
+  fractionSand:
+    slot_uri: hyobs:fractionSand
+    title: Fraction Sand
+    description: Fractional value describing fraction sand for a catchment or spatial unit.
+    range: decimal
+  fractionScrub:
+    slot_uri: hyobs:fractionScrub
+    title: Fraction Scrub
+    description: Fractional value describing fraction scrub for a catchment or spatial unit.
+    range: decimal
+  fractionScrub2018:
+    slot_uri: hyobs:fractionScrub2018
+    title: Fraction Scrub 2018
+    description: Fractional value describing fraction scrub 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionSedim:
+    slot_uri: hyobs:fractionSedim
+    title: Fraction Sedim
+    description: Fractional value describing fraction sedim for a catchment or spatial unit.
+    range: decimal
+  fractionSiliSed:
+    slot_uri: hyobs:fractionSiliSed
+    title: Fraction Sili Sed
+    description: Fractional value describing fraction sili sed for a catchment or spatial unit.
+    range: decimal
+  fractionSilic:
+    slot_uri: hyobs:fractionSilic
+    title: Fraction Silic
+    description: Fractional value describing fraction silic for a catchment or spatial unit.
+    range: decimal
+  fractionSilt:
+    slot_uri: hyobs:fractionSilt
+    title: Fraction Silt
+    description: Fractional value describing fraction silt for a catchment or spatial unit.
+    range: decimal
+  fractionUnconsol:
+    slot_uri: hyobs:fractionUnconsol
+    title: Fraction Unconsol
+    description: Fractional value describing fraction unconsol for a catchment or spatial unit.
+    range: decimal
+  fractionUrban:
+    slot_uri: hyobs:fractionUrban
+    title: Fraction Urban
+    description: Fractional value describing fraction urban for a catchment or spatial unit.
+    range: decimal
+  fractionUrban2018:
+    slot_uri: hyobs:fractionUrban2018
+    title: Fraction Urban 2018
+    description: Fractional value describing fraction urban 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionUrbanVeg:
+    slot_uri: hyobs:fractionUrbanVeg
+    title: Fraction Urban Veg
+    description: Fractional value describing fraction urban veg for a catchment or spatial unit.
+    range: decimal
+  fractionUrbanVeg2018:
+    slot_uri: hyobs:fractionUrbanVeg2018
+    title: Fraction Urban Veg 2018
+    description: Fractional value describing fraction urban veg 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionWater:
+    slot_uri: hyobs:fractionWater
+    title: Fraction Water
+    description: Fractional value describing fraction water for a catchment or spatial unit.
+    range: decimal
+  fractionWater2018:
+    slot_uri: hyobs:fractionWater2018
+    title: Fraction Water 2018
+    description: Fractional value describing fraction water 2018 for a catchment or spatial unit.
+    range: decimal
+  fractionWetl:
+    slot_uri: hyobs:fractionWetl
+    title: Fraction Wetl
+    description: Fractional value describing fraction wetl for a catchment or spatial unit.
+    range: decimal
+  fractionWetl2018:
+    slot_uri: hyobs:fractionWetl2018
+    title: Fraction Wetl 2018
+    description: Fractional value describing fraction wetl 2018 for a catchment or spatial unit.
+    range: decimal
+  gaps_post:
+    slot_uri: hyobs:gaps_post
+    title: Gaps Post
+    description: 'Hydrological or environmental attribute: gaps post.'
+    range: decimal
+  gaps_pre:
+    slot_uri: hyobs:gaps_pre
+    title: Gaps Pre
+    description: 'Hydrological or environmental attribute: gaps pre.'
+    range: decimal
+  govnrID:
+    slot_uri: hyobs:govnrID
+    title: Govnr Id
+    description: 'Hydrological or environmental attribute: govnr id.'
+    range: decimal
+  hasAnalyte:
+    slot_uri: hyobs:hasAnalyte
+    title: Has Analyte
+    description: Relates a water-quality observation to the chemical analyte or compound being measured.
+    range: Analyte
+  hasDepthtoBedrock:
+    slot_uri: hyobs:hasDepthtoBedrock
+    title: Has Depthto Bedrock
+    description: 'Hydrological or environmental attribute: has depthto bedrock.'
+    range: decimal
+  hasRootdepth:
+    slot_uri: hyobs:hasRootdepth
+    title: Has Rootdepth
+    description: 'Hydrological or environmental attribute: has rootdepth.'
+    range: decimal
+  has_Strm_density:
+    slot_uri: hyobs:has_Strm_density
+    title: Has Strm Density
+    description: 'Hydrological or environmental attribute: has strm density.'
+    range: decimal
+  hourlyObsStartYear:
+    slot_uri: hyobs:hourlyObsStartYear
+    title: Hourly Obs Start Year
+    description: 'Hydrological or environmental attribute: hourly obs start year.'
+    range: decimal
+  hyriv_ID:
+    slot_uri: hyobs:hyriv_ID
+    title: Hyriv Id
+    description: 'Hydrological or environmental attribute: hyriv id.'
+    range: decimal
+  leafAreaIndexM01:
+    slot_uri: hyobs:leafAreaIndexM01
+    title: Leaf Area Index M 01
+    description: 'Hydrological or environmental attribute: leaf area index m 01.'
+    range: decimal
+  leafAreaIndexM02:
+    slot_uri: hyobs:leafAreaIndexM02
+    title: Leaf Area Index M 02
+    description: 'Hydrological or environmental attribute: leaf area index m 02.'
+    range: decimal
+  leafAreaIndexM03:
+    slot_uri: hyobs:leafAreaIndexM03
+    title: Leaf Area Index M 03
+    description: 'Hydrological or environmental attribute: leaf area index m 03.'
+    range: decimal
+  leafAreaIndexM04:
+    slot_uri: hyobs:leafAreaIndexM04
+    title: Leaf Area Index M 04
+    description: 'Hydrological or environmental attribute: leaf area index m 04.'
+    range: decimal
+  leafAreaIndexM05:
+    slot_uri: hyobs:leafAreaIndexM05
+    title: Leaf Area Index M 05
+    description: 'Hydrological or environmental attribute: leaf area index m 05.'
+    range: decimal
+  leafAreaIndexM06:
+    slot_uri: hyobs:leafAreaIndexM06
+    title: Leaf Area Index M 06
+    description: 'Hydrological or environmental attribute: leaf area index m 06.'
+    range: decimal
+  leafAreaIndexM07:
+    slot_uri: hyobs:leafAreaIndexM07
+    title: Leaf Area Index M 07
+    description: 'Hydrological or environmental attribute: leaf area index m 07.'
+    range: decimal
+  leafAreaIndexM08:
+    slot_uri: hyobs:leafAreaIndexM08
+    title: Leaf Area Index M 08
+    description: 'Hydrological or environmental attribute: leaf area index m 08.'
+    range: decimal
+  leafAreaIndexM09:
+    slot_uri: hyobs:leafAreaIndexM09
+    title: Leaf Area Index M 09
+    description: 'Hydrological or environmental attribute: leaf area index m 09.'
+    range: decimal
+  leafAreaIndexM10:
+    slot_uri: hyobs:leafAreaIndexM10
+    title: Leaf Area Index M 10
+    description: 'Hydrological or environmental attribute: leaf area index m 10.'
+    range: decimal
+  leafAreaIndexM11:
+    slot_uri: hyobs:leafAreaIndexM11
+    title: Leaf Area Index M 11
+    description: 'Hydrological or environmental attribute: leaf area index m 11.'
+    range: decimal
+  leafAreaIndexM12:
+    slot_uri: hyobs:leafAreaIndexM12
+    title: Leaf Area Index M 12
+    description: 'Hydrological or environmental attribute: leaf area index m 12.'
+    range: decimal
+  manurePerHa:
+    slot_uri: hyobs:manurePerHa
+    title: Manure Per Ha
+    description: 'Hydrological or environmental attribute: manure per ha.'
+    range: decimal
+  nPointPopulation1991:
+    slot_uri: hyobs:nPointPopulation1991
+    title: N Point Population 1991
+    description: Count value for n point population 1991.
+    range: decimal
+  nPointPopulation2010:
+    slot_uri: hyobs:nPointPopulation2010
+    title: N Point Population 2010
+    description: Count value for n point population 2010.
+    range: decimal
+  nPointWwtp1991:
+    slot_uri: hyobs:nPointWwtp1991
+    title: N Point WWTP 1991
+    description: Count value for n point wwtp 1991.
+    range: decimal
+  nPointWwtp2010:
+    slot_uri: hyobs:nPointWwtp2010
+    title: N Point WWTP 2010
+    description: Count value for n point wwtp 2010.
+    range: decimal
+  nSurplusBatool1991:
+    slot_uri: hyobs:nSurplusBatool1991
+    title: N Surplus Batool 1991
+    description: Count value for n surplus batool 1991.
+    range: decimal
+  nSurplusBatool2010:
+    slot_uri: hyobs:nSurplusBatool2010
+    title: N Surplus Batool 2010
+    description: Count value for n surplus batool 2010.
+    range: decimal
+  nSurplusHaussermann1991:
+    slot_uri: hyobs:nSurplusHaussermann1991
+    title: N Surplus Haussermann 1991
+    description: Count value for n surplus haussermann 1991.
+    range: decimal
+  nSurplusHaussermann2010:
+    slot_uri: hyobs:nSurplusHaussermann2010
+    title: N Surplus Haussermann 2010
+    description: Count value for n surplus haussermann 2010.
+    range: decimal
+  nitrogenTotalYieldPerKm2PerYear:
+    slot_uri: hyobs:nitrogenTotalYieldPerKm2PerYear
+    title: Nitrogen Total Yield Per Km 2 Per Year
+    description: Count value for nitrogen total yield per km 2 per year.
+    range: decimal
+  nitrogenTotalYieldYEW:
+    slot_uri: hyobs:nitrogenTotalYieldYEW
+    title: Nitrogen Total Yield Yew
+    description: Count value for nitrogen total yield yew.
+    range: decimal
+  obsEndYear:
+    slot_uri: hyobs:obsEndYear
+    title: Obs End Year
+    description: 'Hydrological or environmental attribute: obs end year.'
+    range: decimal
+  pPointPopulation1991:
+    slot_uri: hyobs:pPointPopulation1991
+    title: P Point Population 1991
+    description: 'Hydrological or environmental attribute: p point population 1991.'
+    range: decimal
+  pPointPopulation2010:
+    slot_uri: hyobs:pPointPopulation2010
+    title: P Point Population 2010
+    description: 'Hydrological or environmental attribute: p point population 2010.'
+    range: decimal
+  pPointWwtp1991:
+    slot_uri: hyobs:pPointWwtp1991
+    title: P Point WWTP 1991
+    description: 'Hydrological or environmental attribute: p point wwtp 1991.'
+    range: decimal
+  pPointWwtp2010:
+    slot_uri: hyobs:pPointWwtp2010
+    title: P Point WWTP 2010
+    description: 'Hydrological or environmental attribute: p point wwtp 2010.'
+    range: decimal
+  pSurplusBatool1991:
+    slot_uri: hyobs:pSurplusBatool1991
+    title: P Surplus Batool 1991
+    description: 'Hydrological or environmental attribute: p surplus batool 1991.'
+    range: decimal
+  pSurplusBatool2010:
+    slot_uri: hyobs:pSurplusBatool2010
+    title: P Surplus Batool 2010
+    description: 'Hydrological or environmental attribute: p surplus batool 2010.'
+    range: decimal
+  petAnnualMm:
+    slot_uri: hyobs:petAnnualMm
+    title: PET Annual Mm
+    description: 'Hydrological or environmental attribute: pet annual mm.'
+    range: decimal
+  phosphorusAtmosphericDeposition:
+    slot_uri: hyobs:phosphorusAtmosphericDeposition
+    title: Phosphorus Atmospheric Deposition
+    description: 'Hydrological or environmental attribute: phosphorus atmospheric deposition.'
+    range: decimal
+  phosphorusAvailable:
+    slot_uri: hyobs:phosphorusAvailable
+    title: Phosphorus Available
+    description: 'Hydrological or environmental attribute: phosphorus available.'
+    range: decimal
+  phosphorusAvailableAgricultural:
+    slot_uri: hyobs:phosphorusAvailableAgricultural
+    title: Phosphorus Available Agricultural
+    description: 'Hydrological or environmental attribute: phosphorus available agricultural.'
+    range: decimal
+  phosphorusChemicalFertilizer:
+    slot_uri: hyobs:phosphorusChemicalFertilizer
+    title: Phosphorus Chemical Fertilizer
+    description: 'Hydrological or environmental attribute: phosphorus chemical fertilizer.'
+    range: decimal
+  phosphorusInput:
+    slot_uri: hyobs:phosphorusInput
+    title: Phosphorus Input
+    description: 'Hydrological or environmental attribute: phosphorus input.'
+    range: decimal
+  phosphorusOutputPerHa:
+    slot_uri: hyobs:phosphorusOutputPerHa
+    title: Phosphorus Output Per Ha
+    description: 'Hydrological or environmental attribute: phosphorus output per ha.'
+    range: decimal
+  phosphorusRemovalPerHa:
+    slot_uri: hyobs:phosphorusRemovalPerHa
+    title: Phosphorus Removal Per Ha
+    description: 'Hydrological or environmental attribute: phosphorus removal per ha.'
+    range: decimal
+  phosphorusSurplus:
+    slot_uri: hyobs:phosphorusSurplus
+    title: Phosphorus Surplus
+    description: 'Hydrological or environmental attribute: phosphorus surplus.'
+    range: decimal
+  phosphorusTotal:
+    slot_uri: hyobs:phosphorusTotal
+    title: Phosphorus Total
+    description: 'Hydrological or environmental attribute: phosphorus total.'
+    range: decimal
+  phosphorusTotalAgricultural:
+    slot_uri: hyobs:phosphorusTotalAgricultural
+    title: Phosphorus Total Agricultural
+    description: 'Hydrological or environmental attribute: phosphorus total agricultural.'
+    range: decimal
+  phosphorusTotalYieldPerKm2PerYear:
+    slot_uri: hyobs:phosphorusTotalYieldPerKm2PerYear
+    title: Phosphorus Total Yield Per Km 2 Per Year
+    description: Annual yield of phosphorus total yield per km 2 per year normalized by catchment area.
+    range: decimal
+  phosphorusTotalYieldYEW:
+    slot_uri: hyobs:phosphorusTotalYieldYEW
+    title: Phosphorus Total Yield Yew
+    description: 'Hydrological or environmental attribute: phosphorus total yield yew.'
+    range: decimal
+  phosphorusUptakePerHa:
+    slot_uri: hyobs:phosphorusUptakePerHa
+    title: Phosphorus Uptake Per Ha
+    description: 'Hydrological or environmental attribute: phosphorus uptake per ha.'
+    range: decimal
+  populationDensityPerKm2:
+    slot_uri: hyobs:populationDensityPerKm2
+    title: Population Density Per Km 2
+    description: 'Hydrological or environmental attribute: population density per km 2.'
+    range: decimal
+  precipAlpha:
+    slot_uri: hyobs:precipAlpha
+    title: Precip Alpha
+    description: 'Hydrological or environmental attribute: precip alpha.'
+    range: decimal
+  precipLambda:
+    slot_uri: hyobs:precipLambda
+    title: Precip Lambda
+    description: 'Hydrological or environmental attribute: precip lambda.'
+    range: decimal
+  precipSeasonalityIndex:
+    slot_uri: hyobs:precipSeasonalityIndex
+    title: Precip Seasonality Index
+    description: Seasonality index describing the timing and distribution of precipitation through the year.
+    range: decimal
+  precipSeasonalityIndexSw:
+    slot_uri: hyobs:precipSeasonalityIndexSw
+    title: Precip Seasonality Index Sw
+    description: 'Hydrological or environmental attribute: precip seasonality index sw.'
+    range: decimal
+  precipitationAnnualMm:
+    slot_uri: hyobs:precipitationAnnualMm
+    title: Precipitation Annual Mm
+    description: 'Hydrological or environmental attribute: precipitation annual mm.'
+    range: decimal
+  qCoefficientOfVariation:
+    slot_uri: hyobs:qCoefficientOfVariation
+    title: Q Coefficient Of Variation
+    description: 'Hydrological or environmental attribute: q coefficient of variation.'
+    range: decimal
+  qEndDate:
+    slot_uri: hyobs:qEndDate
+    title: Q End Date
+    description: End date of the discharge observation period.
+    range: date
+  qGapsFraction:
+    slot_uri: hyobs:qGapsFraction
+    title: Q Gaps Fraction
+    description: 'Hydrological or environmental attribute: q gaps fraction.'
+    range: decimal
+  qMean:
+    slot_uri: hyobs:qMean
+    title: Q Mean
+    description: 'Hydrological or environmental attribute: q mean.'
+    range: decimal
+  qMedian:
+    slot_uri: hyobs:qMedian
+    title: Q Median
+    description: 'Hydrological or environmental attribute: q median.'
+    range: decimal
+  qMedianSummer:
+    slot_uri: hyobs:qMedianSummer
+    title: Q Median Summer
+    description: 'Hydrological or environmental attribute: q median summer.'
+    range: decimal
+  qMedianWinter:
+    slot_uri: hyobs:qMedianWinter
+    title: Q Median Winter
+    description: 'Hydrological or environmental attribute: q median winter.'
+    range: decimal
+  qMissingCount:
+    slot_uri: hyobs:qMissingCount
+    title: Q Missing Count
+    description: Count value for q missing count.
+    range: integer
+  qSpecificDischarge:
+    slot_uri: hyobs:qSpecificDischarge
+    title: Q Specific Discharge
+    description: 'Hydrological or environmental attribute: q specific discharge.'
+    range: decimal
+  qStartDate:
+    slot_uri: hyobs:qStartDate
+    title: Q Start Date
+    description: Start date of the discharge observation period.
+    range: date
+  qSummerToWinterRatio:
+    slot_uri: hyobs:qSummerToWinterRatio
+    title: Q Summer To Winter Ratio
+    description: 'Hydrological or environmental attribute: q summer to winter ratio.'
+    range: decimal
+  rootDepth:
+    slot_uri: hyobs:rootDepth
+    title: Root Depth
+    description: 'Hydrological or environmental attribute: root depth.'
+    range: decimal
+  rootZoneAvailableWater:
+    slot_uri: hyobs:rootZoneAvailableWater
+    title: Root Zone Available Water
+    description: 'Hydrological or environmental attribute: root zone available water.'
+    range: decimal
+  saturatedHydraulicConductivityPTF_SandClay:
+    slot_uri: hyobs:saturatedHydraulicConductivityPTF_SandClay
+    title: Saturated Hydraulic Conductivity Ptf Sand Clay
+    description: 'Hydrological or environmental attribute: saturated hydraulic conductivity ptf sand clay.'
+    range: decimal
+  saturatedHydraulicConductivityPTF_SiltClayOM:
+    slot_uri: hyobs:saturatedHydraulicConductivityPTF_SiltClayOM
+    title: Saturated Hydraulic Conductivity Ptf Silt Clay Om
+    description: 'Hydrological or environmental attribute: saturated hydraulic conductivity ptf silt clay om.'
+    range: decimal
+  slopeMean:
+    slot_uri: hyobs:slopeMean
+    title: Slope Mean
+    description: Mean terrain slope of a catchment or spatial unit.
+    range: decimal
+  slopeMedian:
+    slot_uri: hyobs:slopeMedian
+    title: Slope Median
+    description: Median terrain slope of a catchment or spatial unit.
+    range: decimal
+  soilCarbonNitrogenRatioMean:
+    slot_uri: hyobs:soilCarbonNitrogenRatioMean
+    title: Soil Carbon Nitrogen Ratio Mean
+    description: 'Hydrological or environmental attribute: soil carbon nitrogen ratio mean.'
+    range: decimal
+  soilNitrogenMean:
+    slot_uri: hyobs:soilNitrogenMean
+    title: Soil Nitrogen Mean
+    description: 'Hydrological or environmental attribute: soil nitrogen mean.'
+    range: decimal
+  soilPhCaCl:
+    slot_uri: hyobs:soilPhCaCl
+    title: Soil Ph Ca Cl
+    description: 'Hydrological or environmental attribute: soil ph ca cl.'
+    range: decimal
+  soilPhH2O:
+    slot_uri: hyobs:soilPhH2O
+    title: Soil Ph H 2 O
+    description: 'Hydrological or environmental attribute: soil ph h 2 o.'
+    range: decimal
+  soilPhosphorusMean:
+    slot_uri: hyobs:soilPhosphorusMean
+    title: Soil Phosphorus Mean
+    description: 'Hydrological or environmental attribute: soil phosphorus mean.'
+    range: decimal
+  soilThetaS:
+    slot_uri: hyobs:soilThetaS
+    title: Soil Theta S
+    description: 'Hydrological or environmental attribute: soil theta s.'
+    range: decimal
+  strahlerOrder:
+    slot_uri: hyobs:strahlerOrder
+    title: Strahler Order
+    description: 'Hydrological or environmental attribute: strahler order.'
+    range: integer
+  totalAvailableWaterContent:
+    slot_uri: hyobs:totalAvailableWaterContent
+    title: Total Available Water Content
+    description: 'Hydrological or environmental attribute: total available water content.'
+    range: decimal
+  twiMean:
+    slot_uri: hyobs:twiMean
+    title: TWI Mean
+    description: 'Hydrological or environmental attribute: twi mean.'
+    range: decimal
+  twiMedian:
+    slot_uri: hyobs:twiMedian
+    title: TWI Median
+    description: 'Hydrological or environmental attribute: twi median.'
+    range: decimal
+  twiP90:
+    slot_uri: hyobs:twiP90
+    title: TWI P 90
+    description: 'Hydrological or environmental attribute: twi p 90.'
+    range: decimal
+  uwwtpCount:
+    slot_uri: hyobs:uwwtpCount
+    title: Uwwtp Count
+    description: Count value for uwwtp count.
+    range: integer
+  volumetricPorosityPTF_SandClay:
+    slot_uri: hyobs:volumetricPorosityPTF_SandClay
+    title: Volumetric Porosity Ptf Sand Clay
+    description: 'Hydrological or environmental attribute: volumetric porosity ptf sand clay.'
+    range: decimal
+enums:
+  HydroCustomUnitEnum:
+    description: Custom units used by the Hydro-Knowledge Graph when no QUDT unit was used directly in the mappings.
+    permissible_values:
+      DAY-PER-YR:
+        meaning: hyobs:DAY-PER-YR
+        description: Custom Hydro-KG unit term DAY-PER-YR.

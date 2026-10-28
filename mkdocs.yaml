@@ -1,0 +1,7 @@
+site_name: "Hydrometeorological Observation Ontology"
+theme:
+  name: material
+plugins:
+  - search
+nav:
+  - Home: index.md

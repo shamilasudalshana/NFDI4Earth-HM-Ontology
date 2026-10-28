@@ -24,3 +24,4 @@ __pycache__/
 
 # ignore testing files 
 test.py
+linkml_run.txt
